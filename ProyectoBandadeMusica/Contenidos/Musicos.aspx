@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Principal.Master" CodeBehind="Musicos.aspx.vb" Inherits="ProyectoBandadeMusica.Formulario_web1" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Músicos</h1>
-    <br />
+   <h1>Músicos</h1>
+
+   <asp:Panel ID="pnDatos" runat="server">
     <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al músico" ControlToValidate="tbNombre"></asp:RequiredFieldValidator>
@@ -31,4 +32,5 @@
     <br />
     <asp:Button ID="btGuardar" runat="server" Text="Guardar" />
     <asp:Button ID="btCancelar" runat="server" Text="Cancelar" />
+   </asp:Panel>
 </asp:Content>

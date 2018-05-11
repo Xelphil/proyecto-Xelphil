@@ -4,7 +4,7 @@ Public Class Formulario_web1
     Inherits System.Web.UI.Page
     Dim cadena As String = "Data Source=(local);Initial Catalog=BandaDeMusica;Integrated Security=SSPI;"
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        pnDatos.Enabled = False
     End Sub
 
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
