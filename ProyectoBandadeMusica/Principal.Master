@@ -5,12 +5,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+        <div>
+            <asp:Image ID="imgLogo" runat="server" />
+        </div>
+       <nav>
+           <asp:Button ID="btTrabajos" runat="server" Text="Trabajos" />
+           <asp:Button ID="btMusicos" runat="server" Text="Musicos" />
+           <asp:Button ID="btGastos" runat="server" Text="Gastos" />
+           <asp:Button ID="btCatTrab" runat="server" Text="Categoría Trabajos" />
+           <asp:Button ID="btCatMus" runat="server" Text="Categoría Musicos" />
+           <asp:Button ID="btInstrumentos" runat="server" Text="Instrumentos" />
+           <asp:Button ID="btUsuarios" runat="server" Text="Usuarios" />
+       </nav>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>

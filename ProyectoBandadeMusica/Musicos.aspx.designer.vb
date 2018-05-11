@@ -11,95 +11,113 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Principal
+Partial Public Class Formulario_web1
     
     '''<summary>
-    '''Control form1.
+    '''Control lbNombre.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
+    Protected WithEvents lbNombre As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control imgLogo.
+    '''Control tbNombre.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents imgLogo As Global.System.Web.UI.WebControls.Image
+    Protected WithEvents tbNombre As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control btTrabajos.
+    '''Control lbApellidos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btTrabajos As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents lbApellidos As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control btMusicos.
+    '''Control tbApellidos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btMusicos As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents tbApellidos As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control btGastos.
+    '''Control lbDireccion.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btGastos As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents lbDireccion As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control btCatTrab.
+    '''Control tbDireccion.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btCatTrab As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents tbDireccion As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control btCatMus.
+    '''Control lbCoche.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btCatMus As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents lbCoche As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control btInstrumentos.
+    '''Control cbCoche.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btInstrumentos As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents cbCoche As Global.System.Web.UI.WebControls.CheckBox
     
     '''<summary>
-    '''Control btUsuarios.
+    '''Control lbDisponibilidad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btUsuarios As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents lbDisponibilidad As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control ContentPlaceHolder1.
+    '''Control cbDisponibilidad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ContentPlaceHolder1 As Global.System.Web.UI.WebControls.ContentPlaceHolder
+    Protected WithEvents cbDisponibilidad As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''Control lbCategoriaMusico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbCategoriaMusico As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control ddlCategoriaMusico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlCategoriaMusico As Global.System.Web.UI.WebControls.DropDownList
 End Class
