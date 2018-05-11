@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style>
+        form{
+            background-image:url(~/Ent_Cliente/Imagenes/fondo-de-pentagrama.jpg)
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">

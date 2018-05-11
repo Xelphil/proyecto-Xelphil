@@ -14,6 +14,78 @@ Option Explicit On
 Partial Public Class Formulario_web1
     
     '''<summary>
+    '''Control pnBuscador.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnBuscador As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control pnBuscar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnBuscar As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control lbBuscar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbBuscar As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control ddlBuscar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlBuscar As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control tbBuscar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents tbBuscar As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control btBusqueda.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btBusqueda As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control gvMusicos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents gvMusicos As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control SqlDSMusicos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDSMusicos As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
     '''Control pnDatos.
     '''</summary>
     '''<remarks>
