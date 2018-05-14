@@ -13,7 +13,7 @@
                 <asp:TextBox ID="tbBuscar" runat="server"></asp:TextBox>
                 <asp:Button ID="btBusqueda" runat="server" Text="Buscar..." />
             </asp:Panel>
-            <asp:GridView ID="gvMusicos" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDSMusicos">
+            <asp:GridView ID="gvMusicos" runat="server" AutoGenerateColumns="False" DataKeyNames="id">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" ButtonType="Button" />
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" InsertVisible="False" SortExpression="id" Visible="false"/>
@@ -27,7 +27,9 @@
                     <asp:BoundField DataField="instrumento" HeaderText="Categoría del Músico" SortExpression="instrumento" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDSMusicos" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"></asp:SqlDataSource>
+        <asp:Button ID="btCrear" runat="server" Text="Crear Músico" />
+        <asp:Button ID="btModificar" runat="server" Text="Modificar Músico" />
+        <asp:Button ID="btBorrar" runat="server" Text="Borrar Músico" />
         </asp:Panel>
     <br />
    <asp:Panel ID="pnDatos" runat="server">

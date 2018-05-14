@@ -77,13 +77,31 @@ Partial Public Class Formulario_web1
     Protected WithEvents gvMusicos As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''Control SqlDSMusicos.
+    '''Control btCrear.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents SqlDSMusicos As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents btCrear As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btModificar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btModificar As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btBorrar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btBorrar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control pnDatos.
