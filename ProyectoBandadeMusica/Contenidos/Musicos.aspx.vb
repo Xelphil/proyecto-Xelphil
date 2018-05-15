@@ -6,29 +6,14 @@ Public Class Formulario_web1
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         pnDatos.Enabled = False
         listarMusicos()
+        btCrear.Enabled = True
         btModificar.Enabled = False
         btBorrar.Enabled = False
     End Sub
 
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
-
-        Dim cnxComprobacion As New SqlConnection(cadena)
-        Dim sentenciaComprobacion As String = "select COUNT(id) from Musicos where id=@id"
-        Dim cmdComprobacion As New SqlCommand(sentenciaComprobacion, cnxComprobacion)
-        cmdComprobacion.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
-        Dim opcion As Integer
-        Try
-            cnxComprobacion.Open()
-            If cnxComprobacion.State = Data.ConnectionState.Open Then
-                opcion = cmdComprobacion.ExecuteScalar()
-            End If
-        Catch ex As Exception
-            Throw New Exception(ex.Message)
-        Finally
-            cnxComprobacion.Close()
-            cnxComprobacion.Dispose()
-        End Try
-        If opcion = 0 Then
+        MsgBox(Session("modifica").ToString)
+        If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "insert into Musicos(nombre,apellidos,direccion,ciudad,coche,disponibilidad,categoriamusico) values(@nombre,@apellidos,@direccion,@ciudad,@coche,@disponibilidad,@categoriamusico)"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -51,10 +36,38 @@ Public Class Formulario_web1
             Finally
                 cnxInsert.Close()
                 cnxInsert.Dispose()
+
+                Response.Redirect("~/Contenidos/Musicos.aspx")
             End Try
         Else
             'update
-            '
+            MsgBox(Session("modifica").ToString)
+            MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+            Dim cnxInsert As New SqlConnection(cadena)
+            Dim sentenciaInsert As String = "update Musicos set nombre=@nombre,apellidos=@apellidos,direccion=@direccion,ciudad=@ciudad,coche=@coche,disponibilidad=@disponibilidad,categoriamusico=@categoriamusico where id=@id"
+            Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
+            cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
+            cmdInsert.Parameters.AddWithValue("@nombre", tbNombre.Text)
+            cmdInsert.Parameters.AddWithValue("@apellidos", tbApellidos.Text)
+            cmdInsert.Parameters.AddWithValue("@direccion", tbDireccion.Text)
+            cmdInsert.Parameters.AddWithValue("@ciudad", tbCiudad.Text)
+            cmdInsert.Parameters.AddWithValue("@coche", cbCoche.Checked)
+            cmdInsert.Parameters.AddWithValue("@disponibilidad", cbDisponibilidad.Checked)
+            cmdInsert.Parameters.AddWithValue("@categoriamusico", ddlCategoriaMusico.SelectedValue)
+            Try
+                cnxInsert.Open()
+                If cnxInsert.State = Data.ConnectionState.Open Then
+                    cmdInsert.ExecuteNonQuery()
+                    cmdInsert.Parameters.Clear()
+
+                End If
+            Catch ex As Exception
+                Throw New Exception(ex.Message)
+            Finally
+                cnxInsert.Close()
+                cnxInsert.Dispose()
+                Response.Redirect("~/Contenidos/Musicos.aspx")
+            End Try
         End If
     End Sub
     Protected Sub LimpiarCampos()
@@ -81,6 +94,9 @@ Public Class Formulario_web1
     End Sub
     Protected Sub btCancelar_Click(sender As Object, e As EventArgs) Handles btCancelar.Click
         LimpiarCampos()
+        btCrear.Enabled = True
+        btBorrar.Enabled = False
+        btModificar.Enabled = False
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
@@ -107,9 +123,6 @@ Public Class Formulario_web1
         cbDisponibilidad.Checked = fila("disponibilidad")
         ddlCategoriaMusico.SelectedIndex = -1
         ddlCategoriaMusico.SelectedValue = fila("categoriamusico")
-
-        'Almaceno los datos de Cliente.
-        'Session("cliente") = idCliente & "#" & fila("RazonSocial").ToString & "#" & fila("NombreComercial").ToString & "#" & fila("TipoIdSede") & "#" & fila("TipoIdSoporte") & "#" & fila("TipoIdDepartamento") & "#" & fila("TipoIdEquipo") & "#" & fila("TipoIdTrabajadores")
 
     End Sub
 
@@ -141,64 +154,38 @@ Public Class Formulario_web1
     End Sub
 
     Protected Sub btBorrar_Click(sender As Object, e As EventArgs) Handles btBorrar.Click
-        'Dim cnxDelete As New SqlConnection(cadena)
-        'Dim sentenciaDelete As String = "delete from Clientes where idCliente = @idCliente and Consultora = @Consultora"
-        'Dim cmdDelete As New SqlCommand(sentenciaDelete, cnxDelete)
-        'cmdDelete.Parameters.AddWithValue("@idCliente", lbCodigo.Text)
-        'cmdDelete.Parameters.AddWithValue("@Consultora", Session("idConsultora"))
-        'Try
-        '    cnxDelete.Open()
-        '    If cnxDelete.State = Data.ConnectionState.Open Then
-        '        eliminarSedes(lbCodigo.Text)
-        '        eliminarTrabajadores(lbCodigo.Text)
-        '        eliminarUsuariosRel(lbCodigo.Text)
-        '        Dim nfinsert = cmdDelete.ExecuteNonQuery()
-        '        If nfinsert > 0 Then
-        '            '-------------------------
-        '            Dim cnxNotificacion As New SqlConnection(cadena)
-        '            Dim sentenciaNotificacion As String = "insert into NotificacionesClientes(Cliente,Consultora,Descripcion,Fecha,Leido) values (@Cliente,@Consultora,@Descripcion,@Fecha,@Leido)"
-        '            Dim cmdNotificacion As New SqlCommand(sentenciaNotificacion, cnxNotificacion)
-        '            cmdNotificacion.Parameters.AddWithValue("@Cliente", tbCodigo.Text)
-        '            cmdNotificacion.Parameters.AddWithValue("@Consultora", Session("IdConsultora"))
-        '            cmdNotificacion.Parameters.AddWithValue("@Descripcion", DescripciondelCambio)
-        '            cmdNotificacion.Parameters.AddWithValue("@Fecha", DateTime.Now)
-        '            cmdNotificacion.Parameters.AddWithValue("@Leido", False)
-        '            Try
-        '                cnxNotificacion.Open()
-        '                If cnxNotificacion.State = Data.ConnectionState.Open Then
-        '                    cmdNotificacion.ExecuteNonQuery()
-        '                    cmdNotificacion.Parameters.Clear()
-        '                End If
-        '            Catch ex As Exception
-        '                Throw New Exception(ex.Message)
-        '            Finally
-        '                cnxNotificacion.Close()
-        '                cnxNotificacion.Dispose()
-        '            End Try
-        '            '------------------------------
-        '        End If
-        '        listarClientes()
-        '        LimpiarCampos()
-        '        lbCodigo.Text = ""
-        '        lbRazon.Text = ""
-        '        lbNombreCom.Text = ""
-        '        Session("cliente") = Nothing
-        '        btNuevo.Enabled = True
-        '    End If
-        'Catch ex As Exception
-        '    Throw New Exception(ex.Message)
-        'Finally
-        '    cnxDelete.Close()
-        '    cnxDelete.Dispose()
-        'End Try
+        Dim cnxInsert As New SqlConnection(cadena)
+        Dim sentenciaInsert As String = "delete from Musicos where id=@id"
+        Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
+        cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
+        Try
+            cnxInsert.Open()
+            If cnxInsert.State = Data.ConnectionState.Open Then
+                cmdInsert.ExecuteNonQuery()
+                cmdInsert.Parameters.Clear()
+
+            End If
+        Catch ex As Exception
+            Throw New Exception(ex.Message)
+        Finally
+            cnxInsert.Close()
+            cnxInsert.Dispose()
+            LimpiarCampos()
+            Response.Redirect("~/Contenidos/Musicos.aspx")
+        End Try
     End Sub
 
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
-
+        Session("modifica") = True
+        pnDatos.Enabled = True
+        MsgBox(Session("modifica").ToString)
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click
+        btModificar.Enabled = False
+        btBorrar.Enabled = False
         pnDatos.Enabled = True
         LimpiarCampos()
+        Session("modifica") = False
     End Sub
 End Class
