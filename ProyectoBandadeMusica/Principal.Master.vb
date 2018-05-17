@@ -12,4 +12,8 @@
     Protected Sub btInstrumentos_Click(sender As Object, e As EventArgs) Handles btInstrumentos.Click
         Response.Redirect("~/Contenidos/Instrumentos.aspx")
     End Sub
+
+    Protected Sub btCatMus_Click(sender As Object, e As EventArgs) Handles btCatMus.Click
+        Response.Redirect("~/Contenidos/CategoriaMusico.aspx")
+    End Sub
 End Class
