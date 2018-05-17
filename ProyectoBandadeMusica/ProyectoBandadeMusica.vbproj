@@ -119,12 +119,20 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contenidos\Instrumentos.aspx" />
     <Content Include="Contenidos\Musicos.aspx" />
     <Content Include="Ent_Cliente\Imagenes\emblemmatic-bandademusica-logo-10.png" />
     <Content Include="Ent_Cliente\Imagenes\fondo-de-pentagrama.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contenidos\Instrumentos.aspx.designer.vb">
+      <DependentUpon>Instrumentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos\Instrumentos.aspx.vb">
+      <DependentUpon>Instrumentos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Contenidos\Musicos.aspx.designer.vb">
       <DependentUpon>Musicos.aspx</DependentUpon>
     </Compile>
