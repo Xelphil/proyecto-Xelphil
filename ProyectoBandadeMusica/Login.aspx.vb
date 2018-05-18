@@ -11,7 +11,8 @@ Public Class Login
     Private Sub oLogin_Authenticate(sender As Object, e As AuthenticateEventArgs) Handles oLogin.Authenticate
         Session("usuario") = okUsuario(oLogin.UserName, oLogin.Password)
         If Session("usuario").Rows.Count = 1 Then
-            FormsAuthentication.RedirectFromLoginPage(oLogin.UserName, False)
+            Response.Redirect("~/Principal.Master")
+            'FormsAuthentication.RedirectFromLoginPage(oLogin.UserName, False)
         End If
     End Sub
     Public Function okUsuario(ByVal usuario As String, ByVal contraseña As String)

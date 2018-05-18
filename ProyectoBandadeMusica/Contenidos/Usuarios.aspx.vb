@@ -1,39 +1,54 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class Formulario_web1
+Public Class Formulario_web5
     Inherits System.Web.UI.Page
     Dim cadena As String = "Data Source=(local);Initial Catalog=BandaDeMusica;Integrated Security=SSPI;"
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Session("usuario") Is Nothing Then
             Response.Redirect("~/Login.aspx")
         Else
-            If Session("rolAdmin") = True Then
-                MsgBox("admin")
-                MsgBox(Session("DatosUsuario"))
-            Else
-                MsgBox("user")
-                pnBuscador.Visible = False
-                btCrear.Visible = False
-                MsgBox(Session("DatosUsuario"))
-                'Dim idCliente = Session("DatosUsuario").ToString.Split("#")(3)
-                'Dim sentenciaCliente As String = "select * from Musicos where id=@id"
-                'Dim cnxCliente As New SqlConnection(cadena)
-                'Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
-                'cmdCliente.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
-                'Dim adaptadorCliente As New SqlDataAdapter(cmdCliente)
-                'Dim dt As New DataTable
-                'adaptadorCliente.Fill(dt)
-                'Dim fila As DataRow = dt.Rows(0)
+            ''MsgBox(idUsuario & "--" & nombreUsuario & "--" & administrador & "--" & cliente & "--" & consultora)
+            'lbUsuario.Text = "Bienvenido, " & nombreUsuario
+            'If administrador = True Then
+            '    Session("rolAdmin") = True
+            '    elementoUsuario.Visible = True
+            '    elementoUsuarioConsultora.Visible = True
+            '    elementoAcceso.Visible = True
+            '    elementoExterna.Visible = True
+            '    elementoClausula.Visible = True
+            '    lbDatos.Visible = False
+            'End If
+            'If consultora = True Then
+            '    Session("rolConsultora") = True
+            '    obtenerConsultora(idUsuario)
+            '    Dim sentencia As String = "select COUNT(*) from NotificacionesConsultora where Consultora=@Consultora and Leido=0"
+            '    Dim ok = TienesMensajes(sentencia)
 
-                'tbNombre.Text = fila("nombre").ToString
-                'tbApellidos.Text = fila("apellidos").ToString
-                'tbCiudad.Text = fila("ciudad").ToString
-                'tbDireccion.Text = fila("direccion").ToString
-                'cbCoche.Checked = fila("coche")
-                'cbDisponibilidad.Checked = fila("disponibilidad")
-                'ddlCategoriaMusico.SelectedIndex = -1
-                'ddlCategoriaMusico.SelectedValue = fila("categoriamusico")
-            End If
+            '    If ok = True Then
+            '        btnuenot.BackColor = Drawing.Color.Coral
+            '    End If
+
+            '    frame.Src = "~/cliente.aspx"
+            '    elementoConsultora.Visible = False
+            '    elementoUsuarioConsultora.Visible = True
+            '    elementoExterna.Visible = True
+            '    elementoClausula.Visible = True
+            'End If
+            'If cliente = True Then
+            '    Session("rolCliente") = True
+            '    obtenerCliente(idUsuario)
+
+            '    Dim sentencia As String = "select COUNT(*) from NotificacionesClientes where Cliente=@Cliente and Consultora=@Consultora and Leido=0"
+            '    Dim ok = TienesMensajes(sentencia)
+
+            '    If ok = True Then
+            '        btnuenot.BackColor = Drawing.Color.Coral
+            '    End If
+
+            '    frame.Src = "~/sede.aspx"
+            '    elementoConsultora.Visible = False
+            '    elementoCliente.Visible = False
+            'End If
         End If
 
         pnDatos.Enabled = False
