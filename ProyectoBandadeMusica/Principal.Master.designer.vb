@@ -32,6 +32,15 @@ Partial Public Class Principal
     Protected WithEvents imgLogo As Global.System.Web.UI.WebControls.Image
     
     '''<summary>
+    '''Control btCerrarSesion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btCerrarSesion As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''Control btTrabajos.
     '''</summary>
     '''<remarks>

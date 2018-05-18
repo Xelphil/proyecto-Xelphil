@@ -9,9 +9,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-     <asp:Login ID="oLogin" runat="server"  DisplayRememberMe="false"  RememberMeText="Recordar en este equipo"  UserNameLabelText="" PasswordLabelText="" TitleText="Usuarios registrados" >
+    <div id="login">
+        <asp:Login ID="oLogin" runat="server" DisplayRememberMe="false" TitleText="INICIO DE SESIÓN" UserNameLabelText="" PasswordLabelText="" LoginButtonText="ACCEDER" FailureText="El usuario no existe.">
         </asp:Login>
+        <br />
+        <asp:Button ID="btVisitante" runat="server" Text="Acceder como Visitante" />
     </div>
     </form>
 </body>

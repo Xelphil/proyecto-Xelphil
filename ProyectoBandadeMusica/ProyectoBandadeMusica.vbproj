@@ -119,6 +119,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contenidos\CategoriaTrabajo.aspx" />
     <Content Include="Contenidos\Instrumentos.aspx" />
     <Content Include="Contenidos\CategoriaMusico.aspx" />
     <Content Include="Contenidos\Musicos.aspx" />
@@ -128,7 +129,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\codigo.vb" />
+    <Compile Include="Contenidos\CategoriaTrabajo.aspx.designer.vb">
+      <DependentUpon>CategoriaTrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos\CategoriaTrabajo.aspx.vb">
+      <DependentUpon>CategoriaTrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Contenidos\EncriptarPass.vb" />
     <Compile Include="Contenidos\Instrumentos.aspx.designer.vb">
       <DependentUpon>Instrumentos.aspx</DependentUpon>
     </Compile>

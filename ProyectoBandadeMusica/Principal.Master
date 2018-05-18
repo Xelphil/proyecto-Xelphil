@@ -16,7 +16,8 @@
     <div>
         <div>
             <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Ent_Cliente/Imagenes/emblemmatic-bandademusica-logo-10.png"/>
-        </div>
+            <asp:Button ID="btCerrarSesion" runat="server" Text="Cerrar Sesion" />
+        </div> 
        <nav>
            <asp:Button ID="btTrabajos" runat="server" Text="Trabajos" />
            <asp:Button ID="btMusicos" runat="server" Text="Musicos" />

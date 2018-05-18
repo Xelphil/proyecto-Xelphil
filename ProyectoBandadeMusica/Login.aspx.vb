@@ -1,24 +1,40 @@
-﻿Public Class Login
+﻿Imports System.Data.SqlClient
+
+Public Class Login
     Inherits System.Web.UI.Page
 
-    Private Sub login_Init(sender As Object, e As EventArgs) Handles Me.Init
-        CType(oLogin.FindControl("Username"), TextBox).Attributes.Add("placeholder", "Usuario")
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        CType(oLogin.FindControl("UserName"), TextBox).Attributes.Add("placeholder", "Usuario")
         CType(oLogin.FindControl("Password"), TextBox).Attributes.Add("placeholder", "Contraseña")
-
-        If Request.IsAuthenticated Then ' El usuario se encuentra autenticado, ya que se creó una cookie persistente con el tique de validación. Se redirecciona directamente a principal.aspx.
-            Response.Redirect("contenidos/Musicos.aspx")
-        End If
     End Sub
 
-    Protected Sub oLogin_Authenticate(sender As Object, e As AuthenticateEventArgs) Handles oLogin.Authenticate
-        If codigo.searchUsuario(oLogin.UserName, oLogin.Password) Then
-            ' Emite un vale de autenticación para el usuario que es guardado en la cookie predeterminada (persistente o no).
-            ' A su vez, redirige al usuario autenticado hacia la dirección URL originalmente solicitada.
-            FormsAuthentication.RedirectFromLoginPage(oLogin.UserName, oLogin.RememberMeSet) ' La persistencia de la cookie depende de la opción marcada en el checkbox "Recuérdame".
-            ' La cookie, si es persistente, tiene el tiempo de expiración establecido en la propiedad Timeout del Web.config
-            ' sino, expira cuando finalice la sesion del explorador.
-            Response.Redirect("contenidos/Musicos.aspx")
+    Private Sub oLogin_Authenticate(sender As Object, e As AuthenticateEventArgs) Handles oLogin.Authenticate
+        Session("usuario") = okUsuario(oLogin.UserName, oLogin.Password)
+        If Session("usuario").Rows.Count = 1 Then
+            FormsAuthentication.RedirectFromLoginPage(oLogin.UserName, False)
         End If
     End Sub
+    Public Function okUsuario(ByVal usuario As String, ByVal contraseña As String)
+        Dim dt As New DataTable
+        Dim cnx As New SqlConnection("Data Source=(local);Initial Catalog=BandaDeMusica;Integrated Security=SSPI;")
+        Dim sentencia As String = "select * from Usuarios where usuario = @NombreUsuario and contraseña = @Password"
+        Dim cmd As New SqlCommand(sentencia, cnx)
+        cmd.Parameters.AddWithValue("@NombreUsuario", usuario)
+        Dim wrapper As New EncriptarPass("")
+       ' Dim password = wrapper.EncryptData(contraseña)
+        'cmd.Parameters.AddWithValue("@Password", password)
+        cmd.Parameters.AddWithValue("@Password", contraseña)
+        Try
+            Dim adt As New SqlDataAdapter(cmd)
+            adt.Fill(dt)
+        Catch ex As Exception
+            Throw New Exception(ex.Message)
+        End Try
+        Return dt
+    End Function
 
+    Protected Sub btVisitante_Click(sender As Object, e As EventArgs) Handles btVisitante.Click
+        Session("visitante") = True
+        'introducir datos
+    End Sub
 End Class
