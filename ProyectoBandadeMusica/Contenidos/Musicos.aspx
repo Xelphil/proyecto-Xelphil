@@ -23,8 +23,8 @@
                     <asp:BoundField DataField="ciudad" HeaderText="Ciudad donde vive el Músico" SortExpression="ciudad" />
                     <asp:CheckBoxField DataField="coche" HeaderText="¿Tiene Coche?" SortExpression="coche" />
                     <asp:CheckBoxField DataField="disponibilidad" HeaderText="¿Esta Disponible?" SortExpression="disponibilidad" />
-                    <asp:BoundField DataField="categoriamusico" HeaderText="categoriamusico" SortExpression="categoriamusico" Visible="false"/>
-                    <asp:BoundField DataField="instrumento" HeaderText="Categoría del Músico" SortExpression="instrumento" />
+                    <asp:BoundField DataField="categoriamusico" HeaderText="Categoria del Músico" SortExpression="categoriamusico"/>
+                    <asp:BoundField DataField="instrumento" HeaderText="Instrumento del Músico" SortExpression="instrumento" />
                 </Columns>
             </asp:GridView>
         <asp:Button ID="btCrear" runat="server" Text="Crear Músico" />

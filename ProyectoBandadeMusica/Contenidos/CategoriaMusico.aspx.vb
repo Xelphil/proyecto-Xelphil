@@ -65,7 +65,7 @@ Public Class Formulario_web3
         ddlCategoriaMusico.SelectedIndex = -1
     End Sub
     Public Sub listarMusicos()
-        Dim sentenciaBuscar As String = "select CategoriaMusico.id,CategoriaMusico.sueldo,Instrumentos.instrumento from CategoriaMusico join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"
+        Dim sentenciaBuscar As String = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
         'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
@@ -105,13 +105,13 @@ Public Class Formulario_web3
     End Sub
 
     Protected Sub btBusqueda_Click(sender As Object, e As EventArgs) Handles btBusqueda.Click
-        Dim sentenciaBuscar As String = "select CategoriaMusico.id,CategoriaMusico.sueldo,Instrumentos.instrumento from CategoriaMusico join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"
+        Dim sentenciaBuscar As String = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id"
         If Not tbBuscar.Text = Nothing Then
             If ddlBuscar.SelectedValue = 1 Then
-                sentenciaBuscar = "select CategoriaMusico.id,CategoriaMusico.sueldo,Instrumentos.instrumento from CategoriaMusico join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where CategoriaMusico.sueldo like '%" & tbBuscar.Text & "%'"
+                sentenciaBuscar = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id where CategoriaMusico.sueldo like '%" & tbBuscar.Text & "%'"
             End If
             If ddlBuscar.SelectedValue = 2 Then
-                sentenciaBuscar = "select CategoriaMusico.id,CategoriaMusico.sueldo,Instrumentos.instrumento from CategoriaMusico join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Instrumento.instrumento like '%" & tbBuscar.Text & "%'"
+                sentenciaBuscar = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id where Instrumento.instrumento like '%" & tbBuscar.Text & "%'"
             End If
             Dim cnxBuscar As New SqlConnection(cadena)
             Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
