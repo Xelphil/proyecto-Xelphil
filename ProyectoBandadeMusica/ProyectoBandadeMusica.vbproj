@@ -124,9 +124,11 @@
     <Content Include="Contenidos\Musicos.aspx" />
     <Content Include="Ent_Cliente\Imagenes\emblemmatic-bandademusica-logo-10.png" />
     <Content Include="Ent_Cliente\Imagenes\fondo-de-pentagrama.jpg" />
+    <Content Include="Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\codigo.vb" />
     <Compile Include="Contenidos\Instrumentos.aspx.designer.vb">
       <DependentUpon>Instrumentos.aspx</DependentUpon>
     </Compile>
@@ -146,6 +148,13 @@
     </Compile>
     <Compile Include="Contenidos\Musicos.aspx.vb">
       <DependentUpon>Musicos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
