@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class Login
+Public Class Inicio
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -22,7 +22,7 @@ Public Class Login
         Dim cmd As New SqlCommand(sentencia, cnx)
         cmd.Parameters.AddWithValue("@NombreUsuario", usuario)
         Dim wrapper As New EncriptarPass("")
-       ' Dim password = wrapper.EncryptData(contraseña)
+        ' Dim password = wrapper.EncryptData(contraseña)
         'cmd.Parameters.AddWithValue("@Password", password)
         cmd.Parameters.AddWithValue("@Password", contraseña)
         Try
