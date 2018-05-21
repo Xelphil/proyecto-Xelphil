@@ -15,24 +15,24 @@ Public Class Formulario_web1
                 pnBuscador.Visible = False
                 btCrear.Visible = False
                 MsgBox(Session("DatosUsuario"))
-                'Dim idCliente = Session("DatosUsuario").ToString.Split("#")(3)
-                'Dim sentenciaCliente As String = "select * from Musicos where id=@id"
-                'Dim cnxCliente As New SqlConnection(cadena)
-                'Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
-                'cmdCliente.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
-                'Dim adaptadorCliente As New SqlDataAdapter(cmdCliente)
-                'Dim dt As New DataTable
-                'adaptadorCliente.Fill(dt)
-                'Dim fila As DataRow = dt.Rows(0)
+                Dim idCliente = Session("DatosUsuario").ToString.Split("#")(3)
+                Dim sentenciaCliente As String = "select * from Musicos where id=@id"
+                Dim cnxCliente As New SqlConnection(cadena)
+                Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
+                cmdCliente.Parameters.AddWithValue("@id", idCliente)
+                Dim adaptadorCliente As New SqlDataAdapter(cmdCliente)
+                Dim dt As New DataTable
+                adaptadorCliente.Fill(dt)
+                Dim fila As DataRow = dt.Rows(0)
 
-                'tbNombre.Text = fila("nombre").ToString
-                'tbApellidos.Text = fila("apellidos").ToString
-                'tbCiudad.Text = fila("ciudad").ToString
-                'tbDireccion.Text = fila("direccion").ToString
-                'cbCoche.Checked = fila("coche")
-                'cbDisponibilidad.Checked = fila("disponibilidad")
-                'ddlCategoriaMusico.SelectedIndex = -1
-                'ddlCategoriaMusico.SelectedValue = fila("categoriamusico")
+                tbNombre.Text = fila("nombre").ToString
+                tbApellidos.Text = fila("apellidos").ToString
+                tbCiudad.Text = fila("ciudad").ToString
+                tbDireccion.Text = fila("direccion").ToString
+                cbCoche.Checked = fila("coche")
+                cbDisponibilidad.Checked = fila("disponibilidad")
+                ddlCategoriaMusico.SelectedIndex = -1
+                ddlCategoriaMusico.SelectedValue = fila("categoriamusico")
             End If
         End If
 
