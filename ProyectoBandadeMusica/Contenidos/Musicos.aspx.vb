@@ -5,7 +5,7 @@ Public Class Formulario_web1
     Dim cadena As String = "Data Source=(local);Initial Catalog=BandaDeMusica;Integrated Security=SSPI;"
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Session("usuario") Is Nothing Then
-            Response.Redirect("~/Login.aspx")
+            Response.Redirect("~/Inicio.aspx")
         Else
             If Session("rolAdmin") = True Then
                 MsgBox("admin")

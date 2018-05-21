@@ -10,8 +10,9 @@ Public Class Inicio
 
     Private Sub oLogin_Authenticate(sender As Object, e As AuthenticateEventArgs) Handles oLogin.Authenticate
         Session("usuario") = okUsuario(oLogin.UserName, oLogin.Password)
+        'MsgBox(Session("usuario").Rows.Count)
         If Session("usuario").Rows.Count = 1 Then
-            Response.Redirect("~/Principal.Master")
+            Response.Redirect("~/Contenidos/Principal.aspx")
             'FormsAuthentication.RedirectFromLoginPage(oLogin.UserName, False)
         End If
     End Sub
