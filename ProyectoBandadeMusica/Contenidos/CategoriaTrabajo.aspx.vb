@@ -4,6 +4,17 @@ Public Class Formulario_web4
     Inherits System.Web.UI.Page
     Dim cadena As String = "Data Source=(local);Initial Catalog=BandaDeMusica;Integrated Security=SSPI;"
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Session("usuario") Is Nothing Then
+            Response.Redirect("~/Inicio.aspx")
+        Else
+            If Session("rolAdmin") = True Then
+                MsgBox("admin")
+                MsgBox(Session("DatosUsuario"))
+            Else
+                'MsgBox("user")
+                Response.Redirect("~/Contenidos/Principal.aspx")
+            End If
+        End If
         pnDatos.Enabled = False
         listarMusicos()
         btCrear.Enabled = True
@@ -14,10 +25,9 @@ Public Class Formulario_web4
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
-            Dim sentenciaInsert As String = "insert into CategoriaMusico(sueldo,instrumento) values(@sueldo,@instrumento)"
+            Dim sentenciaInsert As String = "insert into CategoriaTrabajo(precio) values(@precio)"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
-            cmdInsert.Parameters.AddWithValue("@sueldo", tbNombre.Text)
-            cmdInsert.Parameters.AddWithValue("@instrumento", ddlCategoriaMusico.SelectedValue)
+            cmdInsert.Parameters.AddWithValue("@precio", tbPrecio.Text)
             Try
                 cnxInsert.Open()
                 If cnxInsert.State = Data.ConnectionState.Open Then
@@ -31,18 +41,17 @@ Public Class Formulario_web4
                 cnxInsert.Close()
                 cnxInsert.Dispose()
 
-                Response.Redirect("~/Contenidos/CategoriaMusico.aspx")
+                Response.Redirect("~/Contenidos/CategoriaTrabajo.aspx")
             End Try
         Else
             'update
             MsgBox(Session("modifica").ToString)
             MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
             Dim cnxInsert As New SqlConnection(cadena)
-            Dim sentenciaInsert As String = "update CategoriaMusico set sueldo=@sueldo,instrumento=@instrumento where id=@id"
+            Dim sentenciaInsert As String = "update CategoriaTrabajo set precio=@precio where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
             cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
-            cmdInsert.Parameters.AddWithValue("@sueldo", tbNombre.Text)
-            cmdInsert.Parameters.AddWithValue("@instrumento", ddlCategoriaMusico.SelectedValue)
+            cmdInsert.Parameters.AddWithValue("@precio", tbPrecio.Text)
             Try
                 cnxInsert.Open()
                 If cnxInsert.State = Data.ConnectionState.Open Then
@@ -55,17 +64,18 @@ Public Class Formulario_web4
             Finally
                 cnxInsert.Close()
                 cnxInsert.Dispose()
-                Response.Redirect("~/Contenidos/CategoriaMusico.aspx")
+                Response.Redirect("~/Contenidos/CategoriaTrabajo.aspx")
             End Try
         End If
     End Sub
     Protected Sub LimpiarCampos()
-        tbNombre.Text = ""
+        'tbNombre.Text = ""
 
-        ddlCategoriaMusico.SelectedIndex = -1
+        'ddlCategoriaMusico.SelectedIndex = -1
     End Sub
     Public Sub listarMusicos()
-        Dim sentenciaBuscar As String = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id"
+        ''''Arreglar esta consulta para juntar las dos tablas
+        'Dim sentenciaBuscar As String = "SELECT CategoriaTrabajo.id, CategoriaTrabajo.precio, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
         'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
@@ -82,27 +92,27 @@ Public Class Formulario_web4
         btModificar.Enabled = False
     End Sub
 
-    Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
-        btModificar.Enabled = True
-        btBorrar.Enabled = True
-        btCrear.Enabled = False
+    ''Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
+    ''    'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+    ''    btModificar.Enabled = True
+    ''    btBorrar.Enabled = True
+    ''    btCrear.Enabled = False
 
-        Dim idCliente = gvMusicos.SelectedDataKey.Value
-        Dim sentenciaCliente As String = "select * from CategoriaMusico where id=@id"
-        Dim cnxCliente As New SqlConnection(cadena)
-        Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
-        cmdCliente.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
-        Dim adaptadorCliente As New SqlDataAdapter(cmdCliente)
-        Dim dt As New DataTable
-        adaptadorCliente.Fill(dt)
-        Dim fila As DataRow = dt.Rows(0)
+    ''    Dim idCliente = gvMusicos.SelectedDataKey.Value
+    ''    Dim sentenciaCliente As String = "select * from CategoriaMusico where id=@id"
+    ''    Dim cnxCliente As New SqlConnection(cadena)
+    ''    Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
+    ''    cmdCliente.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
+    ''    Dim adaptadorCliente As New SqlDataAdapter(cmdCliente)
+    ''    Dim dt As New DataTable
+    ''    adaptadorCliente.Fill(dt)
+    ''    Dim fila As DataRow = dt.Rows(0)
 
-        tbNombre.Text = fila("sueldo").ToString
-        ddlCategoriaMusico.SelectedIndex = -1
-        ddlCategoriaMusico.SelectedValue = fila("instrumento")
+    ''    tbNombre.Text = fila("sueldo").ToString
+    ''    ddlCategoriaMusico.SelectedIndex = -1
+    ''    ddlCategoriaMusico.SelectedValue = fila("instrumento")
 
-    End Sub
+    ''End Sub
 
     Protected Sub btBusqueda_Click(sender As Object, e As EventArgs) Handles btBusqueda.Click
         Dim sentenciaBuscar As String = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id"
@@ -159,5 +169,9 @@ Public Class Formulario_web4
         pnDatos.Enabled = True
         LimpiarCampos()
         Session("modifica") = False
+    End Sub
+
+    Protected Sub btInstrumentosNec_Click(sender As Object, e As EventArgs) Handles btInstrumentosNec.Click
+        Response.Redirect("~/Contenidos/MusicosNecesarios")
     End Sub
 End Class

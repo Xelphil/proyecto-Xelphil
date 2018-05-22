@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Formulario_web6
+Partial Public Class Formulario_web13
     
     '''<summary>
     '''Control pnBuscador.

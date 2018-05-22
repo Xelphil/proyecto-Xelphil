@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Principal.Master" CodeBehind="CategoriaMusico.aspx.vb" Inherits="ProyectoBandadeMusica.Formulario_web3" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Principal.Master" CodeBehind="CategoriaMusico.aspx.vb" Inherits="ProyectoBandadeMusica.Formulario_web13" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Categoría Músicos</h1>
     <asp:Panel ID="pnBuscador" runat="server">

@@ -113,22 +113,22 @@ Partial Public Class Formulario_web4
     Protected WithEvents pnDatos As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lbNombre.
+    '''Control lbPrecio.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbNombre As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbPrecio As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control tbNombre.
+    '''Control tbPrecio.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tbNombre As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tbPrecio As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control rfvNombre.
@@ -140,31 +140,13 @@ Partial Public Class Formulario_web4
     Protected WithEvents rfvNombre As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
-    '''Control lbCategoriaMusico.
+    '''Control btInstrumentosNec.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbCategoriaMusico As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control ddlCategoriaMusico.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ddlCategoriaMusico As Global.System.Web.UI.WebControls.DropDownList
-    
-    '''<summary>
-    '''Control SqlDSInstrumento.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents SqlDSInstrumento As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents btInstrumentosNec As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control btGuardar.

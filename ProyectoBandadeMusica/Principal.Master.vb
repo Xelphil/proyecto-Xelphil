@@ -1,5 +1,6 @@
 ﻿Public Class Principal
     Inherits System.Web.UI.MasterPage
+
     Protected Sub btMusicos_Click(sender As Object, e As EventArgs) Handles btMusicos.Click
         Response.Redirect("~/Contenidos/Musicos.aspx")
     End Sub
@@ -18,7 +19,7 @@
     End Sub
 
     Protected Sub btCatTrab_Click(sender As Object, e As EventArgs) Handles btCatTrab.Click
-
+        Response.Redirect("~/Contenidos/CategoriaTrabajo.aspx")
     End Sub
 
     Protected Sub btTrabajos_Click(sender As Object, e As EventArgs) Handles btTrabajos.Click

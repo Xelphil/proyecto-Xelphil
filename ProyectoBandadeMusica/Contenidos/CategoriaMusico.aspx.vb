@@ -1,9 +1,21 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class Formulario_web3
+Public Class Formulario_web13
     Inherits System.Web.UI.Page
     Dim cadena As String = "Data Source=(local);Initial Catalog=BandaDeMusica;Integrated Security=SSPI;"
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Session("usuario") Is Nothing Then
+            Response.Redirect("~/Inicio.aspx")
+        Else
+            If Session("rolAdmin") = True Then
+                MsgBox("admin")
+                MsgBox(Session("DatosUsuario"))
+            Else
+                'MsgBox("user")
+                Response.Redirect("~/Contenidos/Principal.aspx")
+                'MsgBox(Session("DatosUsuario"))
+            End If
+        End If
         pnDatos.Enabled = False
         listarMusicos()
         btCrear.Enabled = True
