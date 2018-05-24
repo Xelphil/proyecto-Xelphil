@@ -25,9 +25,10 @@ Public Class Formulario_web4
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
-            Dim sentenciaInsert As String = "insert into CategoriaTrabajo(precio) values(@precio)"
+            Dim sentenciaInsert As String = "insert into CategoriaTrabajo(precio,nombre) values(@precio,@nombre)"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
             cmdInsert.Parameters.AddWithValue("@precio", tbPrecio.Text)
+            cmdInsert.Parameters.AddWithValue("@nombre", tbPrecio.Text)
             Try
                 cnxInsert.Open()
                 If cnxInsert.State = Data.ConnectionState.Open Then
@@ -48,10 +49,11 @@ Public Class Formulario_web4
             MsgBox(Session("modifica").ToString)
             MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
             Dim cnxInsert As New SqlConnection(cadena)
-            Dim sentenciaInsert As String = "update CategoriaTrabajo set precio=@precio where id=@id"
+            Dim sentenciaInsert As String = "update CategoriaTrabajo set precio=@precio,nombre=@nombre where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
             cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
             cmdInsert.Parameters.AddWithValue("@precio", tbPrecio.Text)
+            cmdInsert.Parameters.AddWithValue("@nombre", tbNombre.Text)
             Try
                 cnxInsert.Open()
                 If cnxInsert.State = Data.ConnectionState.Open Then
@@ -74,8 +76,7 @@ Public Class Formulario_web4
         'ddlCategoriaMusico.SelectedIndex = -1
     End Sub
     Public Sub listarMusicos()
-        ''''Arreglar esta consulta para juntar las dos tablas
-        'Dim sentenciaBuscar As String = "SELECT CategoriaTrabajo.id, CategoriaTrabajo.precio, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id"
+        Dim sentenciaBuscar As String = "select CategoriaTrabajo.nombre,CategoriaTrabajo.precio,InstrumentosNecesarios.cantidad,Instrumentos.instrumento from CategoriaTrabajo join InstrumentosNecesarios on CategoriaTrabajo.id=InstrumentosNecesarios.idcategoriatrabajo join Instrumentos on InstrumentosNecesarios.tipoinstrumento=Instrumentos.id"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
         'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
@@ -92,36 +93,39 @@ Public Class Formulario_web4
         btModificar.Enabled = False
     End Sub
 
-    ''Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-    ''    'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
-    ''    btModificar.Enabled = True
-    ''    btBorrar.Enabled = True
-    ''    btCrear.Enabled = False
+    Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
+        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+        btModificar.Enabled = True
+        btBorrar.Enabled = True
+        btCrear.Enabled = False
 
-    ''    Dim idCliente = gvMusicos.SelectedDataKey.Value
-    ''    Dim sentenciaCliente As String = "select * from CategoriaMusico where id=@id"
-    ''    Dim cnxCliente As New SqlConnection(cadena)
-    ''    Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
-    ''    cmdCliente.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
-    ''    Dim adaptadorCliente As New SqlDataAdapter(cmdCliente)
-    ''    Dim dt As New DataTable
-    ''    adaptadorCliente.Fill(dt)
-    ''    Dim fila As DataRow = dt.Rows(0)
-
-    ''    tbNombre.Text = fila("sueldo").ToString
-    ''    ddlCategoriaMusico.SelectedIndex = -1
-    ''    ddlCategoriaMusico.SelectedValue = fila("instrumento")
-
-    ''End Sub
+        Dim idCliente = gvMusicos.SelectedDataKey.Value
+        Dim sentenciaCliente As String = "select CategoriaTrabajo.nombre,CategoriaTrabajo.precio,InstrumentosNecesarios.cantidad,Instrumentos.instrumento from CategoriaTrabajo join InstrumentosNecesarios on CategoriaTrabajo.id=InstrumentosNecesarios.idcategoriatrabajo join Instrumentos on InstrumentosNecesarios.tipoinstrumento=Instrumentos.id where CategoriaTrabajo.id=@id"
+        Dim cnxCliente As New SqlConnection(cadena)
+        Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
+        cmdCliente.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
+        Dim adaptadorCliente As New SqlDataAdapter(cmdCliente)
+        Dim dt As New DataTable
+        adaptadorCliente.Fill(dt)
+        Dim fila As DataRow = dt.Rows(0)
+        tbPrecio.Text = fila("nombre").ToString
+        tbNombre.Text = fila("precio").ToString
+    End Sub
 
     Protected Sub btBusqueda_Click(sender As Object, e As EventArgs) Handles btBusqueda.Click
-        Dim sentenciaBuscar As String = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id"
+        Dim sentenciaBuscar As String = "select CategoriaTrabajo.nombre,CategoriaTrabajo.precio,InstrumentosNecesarios.cantidad,Instrumentos.instrumento from CategoriaTrabajo join InstrumentosNecesarios on CategoriaTrabajo.id=InstrumentosNecesarios.idcategoriatrabajo join Instrumentos on InstrumentosNecesarios.tipoinstrumento=Instrumentos.id"
         If Not tbBuscar.Text = Nothing Then
             If ddlBuscar.SelectedValue = 1 Then
-                sentenciaBuscar = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id where CategoriaMusico.sueldo like '%" & tbBuscar.Text & "%'"
+                sentenciaBuscar = "select CategoriaTrabajo.nombre,CategoriaTrabajo.precio,InstrumentosNecesarios.cantidad,Instrumentos.instrumento from CategoriaTrabajo join InstrumentosNecesarios on CategoriaTrabajo.id=InstrumentosNecesarios.idcategoriatrabajo join Instrumentos on InstrumentosNecesarios.tipoinstrumento=Instrumentos.id where CategoriaTrabajo.nombre like '%" & tbBuscar.Text & "%'"
             End If
             If ddlBuscar.SelectedValue = 2 Then
-                sentenciaBuscar = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id where Instrumento.instrumento like '%" & tbBuscar.Text & "%'"
+                sentenciaBuscar = "select CategoriaTrabajo.nombre,CategoriaTrabajo.precio,InstrumentosNecesarios.cantidad,Instrumentos.instrumento from CategoriaTrabajo join InstrumentosNecesarios on CategoriaTrabajo.id=InstrumentosNecesarios.idcategoriatrabajo join Instrumentos on InstrumentosNecesarios.tipoinstrumento=Instrumentos.id where CategoriaTrabajo.precio like '%" & tbBuscar.Text & "%'"
+            End If
+            If ddlBuscar.SelectedValue = 3 Then
+                sentenciaBuscar = "select CategoriaTrabajo.nombre,CategoriaTrabajo.precio,InstrumentosNecesarios.cantidad,Instrumentos.instrumento from CategoriaTrabajo join InstrumentosNecesarios on CategoriaTrabajo.id=InstrumentosNecesarios.idcategoriatrabajo join Instrumentos on InstrumentosNecesarios.tipoinstrumento=Instrumentos.id where InstrumentosNecesarios.cantidad like '%" & tbBuscar.Text & "%'"
+            End If
+            If ddlBuscar.SelectedValue = 4 Then
+                sentenciaBuscar = "select CategoriaTrabajo.nombre,CategoriaTrabajo.precio,InstrumentosNecesarios.cantidad,Instrumentos.instrumento from CategoriaTrabajo join InstrumentosNecesarios on CategoriaTrabajo.id=InstrumentosNecesarios.idcategoriatrabajo join Instrumentos on InstrumentosNecesarios.tipoinstrumento=Instrumentos.id where Instrumentos.instrumento like '%" & tbBuscar.Text & "%'"
             End If
             Dim cnxBuscar As New SqlConnection(cadena)
             Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)

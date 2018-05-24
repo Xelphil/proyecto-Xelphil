@@ -5,8 +5,10 @@
             <asp:Panel ID="pnBuscar" runat="server">
                 <asp:Label ID="lbBuscar" runat="server" Text="Buscar por: "></asp:Label>
                 <asp:DropDownList ID="ddlBuscar" runat="server">
-                    <asp:ListItem Text="Sueldo" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Instrumento" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Nombre" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Precio" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Cantidad" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="Instrumento" Value="4"></asp:ListItem>
                 </asp:DropDownList>
                 <asp:TextBox ID="tbBuscar" runat="server"></asp:TextBox>
                 <asp:Button ID="btBusqueda" runat="server" Text="Buscar..." />
@@ -15,7 +17,10 @@
                 <Columns>
                     <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                     <asp:BoundField DataField="id" HeaderText="Cod. Categoría" ReadOnly="True" InsertVisible="False" SortExpression="id"/>
+                    <asp:BoundField DataField="nombre" HeaderText="nombre" SortExpression="nombre"/>
                     <asp:BoundField DataField="precio" HeaderText="precio" SortExpression="precio" />
+                    <asp:BoundField DataField="cantidad" HeaderText="cantidad" SortExpression="cantidad" />
+                    <asp:BoundField DataField="instrumento" HeaderText="instrumento" SortExpression="instrumento" />
                 </Columns>
             </asp:GridView>
         <asp:Button ID="btCrear" runat="server" Text="Crear Categoría" />
@@ -24,18 +29,14 @@
         </asp:Panel>
     <br />
    <asp:Panel ID="pnDatos" runat="server">
+       <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
+    <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="rfvnombre" runat="server" ErrorMessage="Se requiere introducir un nombre a la categoria" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <br />
     <asp:Label ID="lbPrecio" runat="server" Text="Precio: "></asp:Label>
     <asp:TextBox ID="tbPrecio" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al músico" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvprecio" runat="server" ErrorMessage="Se requiere introducir un precio a la categoria" ControlToValidate="tbPrecio" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
-       <%--<div>
-            <asp:Label ID="lbInstrumento" runat="server" Text="Categoria de Musico: "></asp:Label>
-            <asp:DropDownList ID="ddlInstrumento" runat="server" DataSourceID="SqlDSInstrumento" DataTextField="instrumento" DataValueField="id"></asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDSInstrumento" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="SELECT  *  FROM Instrumentos"></asp:SqlDataSource>
-            <asp:Label ID="lbCantidadInstrumentos" runat="server" Text="CantidadInstrumentos: "></asp:Label>
-            <asp:TextBox ID="tbCantidadInstrumentos" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RFVCantidadinstrumentos" runat="server" ErrorMessage="Se requiere introducir una cantidad" ControlToValidate="tbNombre" ValidationGroup="DatosInstrumentosnec"></asp:RequiredFieldValidator>
-        </div>--%>
     <asp:Button ID="btInstrumentosNec" runat="server" Text="Añadir Musicos Necesarios"/>
        <br />
 

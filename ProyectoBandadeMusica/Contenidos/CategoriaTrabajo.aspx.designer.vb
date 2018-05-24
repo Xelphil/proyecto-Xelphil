@@ -113,6 +113,33 @@ Partial Public Class Formulario_web4
     Protected WithEvents pnDatos As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
+    '''Control lbNombre.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbNombre As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control tbNombre.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents tbNombre As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control rfvnombre.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents rfvnombre As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''Control lbPrecio.
     '''</summary>
     '''<remarks>
@@ -131,13 +158,13 @@ Partial Public Class Formulario_web4
     Protected WithEvents tbPrecio As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control rfvNombre.
+    '''Control rfvprecio.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents rfvNombre As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    Protected WithEvents rfvprecio As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''Control btInstrumentosNec.
