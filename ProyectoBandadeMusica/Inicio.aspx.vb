@@ -12,8 +12,8 @@ Public Class Inicio
         Session("usuario") = okUsuario(oLogin.UserName, oLogin.Password)
         'MsgBox(Session("usuario").Rows.Count)
         If Session("usuario").Rows.Count = 1 Then
-            Response.Redirect("~/Contenidos/Principal.aspx")
-            'FormsAuthentication.RedirectFromLoginPage(oLogin.UserName, False)
+            ' Response.Redirect("~/Contenidos/Principal.aspx")
+            FormsAuthentication.RedirectFromLoginPage(oLogin.UserName, False)
         End If
     End Sub
     Public Function okUsuario(ByVal usuario As String, ByVal contraseña As String)

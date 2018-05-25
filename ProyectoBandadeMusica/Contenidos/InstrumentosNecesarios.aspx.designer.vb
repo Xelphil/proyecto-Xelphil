@@ -104,31 +104,22 @@ Partial Public Class Formulario_web14
     Protected WithEvents pnDatos As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lbIdCatTrab.
+    '''Control lbCodCat.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbIdCatTrab As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbCodCat As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control ddlIdCatTrab.
+    '''Control tbCodCat.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ddlIdCatTrab As Global.System.Web.UI.WebControls.DropDownList
-    
-    '''<summary>
-    '''Control SqlDSCatdeTrabajo.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents SqlDSCatdeTrabajo As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents tbCodCat As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control rfvIdCatTrab.

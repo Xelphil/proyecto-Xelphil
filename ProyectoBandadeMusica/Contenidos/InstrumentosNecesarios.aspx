@@ -27,10 +27,9 @@
         <asp:Button ID="btBorrar" runat="server" Text="Borrar cantidad de instrumentos a Categoría" />
     <br />
     <asp:Panel ID="pnDatos" runat="server">
-            <asp:Label ID="lbIdCatTrab" runat="server" Text="Cod. Categoria del Trabajo: "></asp:Label>
-            <asp:DropDownList ID="ddlIdCatTrab" runat="server" DataSourceID="SqlDSCatdeTrabajo" DataTextField="nombre" DataValueField="id"></asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDSCatdeTrabajo" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="SELECT id, nombre FROM CategoriaTrabajo"></asp:SqlDataSource>
-            <asp:RequiredFieldValidator ID="rfvIdCatTrab" runat="server" ErrorMessage="Se requiere seleccionar una categoría de trabajo" ControlToValidate="ddlIdCatTrab" ValidationGroup="DatosInstrumentosnec"></asp:RequiredFieldValidator>
+            <asp:Label ID="lbCodCat" runat="server" Text="Cod. Categoría: "></asp:Label>
+            <asp:TextBox ID="tbCodCat" runat="server" Enabled="false"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvIdCatTrab" runat="server" ErrorMessage="Se requiere seleccionar una categoría de trabajo" ControlToValidate="tbCodCat" ValidationGroup="DatosInstrumentosnec"></asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="lbCantidadInstrumentos" runat="server" Text="CantidadInstrumentos: "></asp:Label>
             <asp:TextBox ID="tbCantidadInstrumentos" runat="server" TextMode="Number"></asp:TextBox>

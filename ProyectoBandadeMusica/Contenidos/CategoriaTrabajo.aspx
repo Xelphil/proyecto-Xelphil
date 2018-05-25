@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Principal.Master" CodeBehind="CategoriaTrabajo.aspx.vb" Inherits="ProyectoBandadeMusica.Formulario_web4" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Categoría Músicos</h1>
+    <h1>Categoría Trabajos</h1>
     <asp:Panel ID="pnBuscador" runat="server">
             <asp:Panel ID="pnBuscar" runat="server">
                 <asp:Label ID="lbBuscar" runat="server" Text="Buscar por: "></asp:Label>
@@ -37,5 +37,5 @@
     <asp:Button ID="btGuardar" runat="server" Text="Guardar" ValidationGroup="DatosMusico"/>
     <asp:Button ID="btCancelar" runat="server" Text="Cancelar" />
    </asp:Panel>
-    <asp:Button ID="btInstrumentosNec" runat="server" Text="Añadir Musicos Necesarios"/>
+    <asp:Button ID="btInstrumentosNec" runat="server" Text="Añadir Musicos Necesarios" Enabled="false"/>
 </asp:Content>

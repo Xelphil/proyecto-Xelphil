@@ -284,15 +284,6 @@ Partial Public Class Formulario_web1
     Protected WithEvents SqlDSCategoriaMusico As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
-    '''Control SqlDSBandadeMusica.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents SqlDSBandadeMusica As Global.System.Web.UI.WebControls.SqlDataSource
-    
-    '''<summary>
     '''Control btGuardar.
     '''</summary>
     '''<remarks>

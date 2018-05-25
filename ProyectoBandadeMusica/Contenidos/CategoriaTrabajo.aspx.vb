@@ -71,9 +71,8 @@ Public Class Formulario_web4
         End If
     End Sub
     Protected Sub LimpiarCampos()
-        'tbNombre.Text = ""
-
-        'ddlCategoriaMusico.SelectedIndex = -1
+        tbNombre.Text = ""
+        tbPrecio.Text = ""
     End Sub
     Public Sub listarMusicos()
         Dim sentenciaBuscar As String = "select * from CategoriaTrabajo"
@@ -103,14 +102,15 @@ Public Class Formulario_web4
         Dim sentenciaCliente As String = "select * from CategoriaTrabajo where id=@id"
         Dim cnxCliente As New SqlConnection(cadena)
         Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
-        cmdCliente.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
+        cmdCliente.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
         Dim adaptadorCliente As New SqlDataAdapter(cmdCliente)
         Dim dt As New DataTable
         adaptadorCliente.Fill(dt)
         Dim fila As DataRow = dt.Rows(0)
-        tbPrecio.Text = fila("nombre").ToString
-        tbNombre.Text = fila("precio").ToString
+        tbPrecio.Text = fila("precio").ToString
+        tbNombre.Text = fila("nombre").ToString
         Session("IdCategoriaTrabajo") = fila("id").ToString
+        btInstrumentosNec.Enabled = True
     End Sub
 
     Protected Sub btBusqueda_Click(sender As Object, e As EventArgs) Handles btBusqueda.Click
@@ -136,9 +136,49 @@ Public Class Formulario_web4
 
     Protected Sub btBorrar_Click(sender As Object, e As EventArgs) Handles btBorrar.Click
         Dim cnxInsert As New SqlConnection(cadena)
-        Dim sentenciaInsert As String = "delete from CategoriaMusico where id=@id"
+        Dim sentenciaInsert As String = "delete from CategoriaTrabajo where id=@id"
         Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
-        cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
+        cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
+        Try
+            BorrarInstrumentosNecesarios(gvMusicos.SelectedDataKey.Value.ToString)
+            cnxInsert.Open()
+            If cnxInsert.State = Data.ConnectionState.Open Then
+                cmdInsert.ExecuteNonQuery()
+                cmdInsert.Parameters.Clear()
+
+            End If
+        Catch ex As Exception
+            Throw New Exception(ex.Message)
+        Finally
+            cnxInsert.Close()
+            cnxInsert.Dispose()
+            LimpiarCampos()
+            Response.Redirect("~/Contenidos/CategoriaTrabajo.aspx")
+        End Try
+    End Sub
+
+    Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
+        Session("modifica") = True
+        pnDatos.Enabled = True
+    End Sub
+
+    Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click
+        btModificar.Enabled = False
+        btBorrar.Enabled = False
+        pnDatos.Enabled = True
+        LimpiarCampos()
+        Session("modifica") = False
+    End Sub
+
+    Protected Sub btInstrumentosNec_Click(sender As Object, e As EventArgs) Handles btInstrumentosNec.Click
+        Response.Redirect("~/Contenidos/InstrumentosNecesarios.aspx")
+    End Sub
+
+    Public Sub BorrarInstrumentosNecesarios(ByVal id As Int32)
+        Dim cnxInsert As New SqlConnection(cadena)
+        Dim sentenciaInsert As String = "delete from InstrumentosNecesarios where idcategoriatrabajo=@id"
+        Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
+        cmdInsert.Parameters.AddWithValue("@id", id)
         Try
             cnxInsert.Open()
             If cnxInsert.State = Data.ConnectionState.Open Then
@@ -152,25 +192,7 @@ Public Class Formulario_web4
             cnxInsert.Close()
             cnxInsert.Dispose()
             LimpiarCampos()
-            Response.Redirect("~/Contenidos/CategoriaMusico.aspx")
+            Response.Redirect("~/Contenidos/InstrumentosNecesarios.aspx")
         End Try
-    End Sub
-
-    Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
-        Session("modifica") = True
-        pnDatos.Enabled = True
-        MsgBox(Session("modifica").ToString)
-    End Sub
-
-    Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click
-        btModificar.Enabled = False
-        btBorrar.Enabled = False
-        pnDatos.Enabled = True
-        LimpiarCampos()
-        Session("modifica") = False
-    End Sub
-
-    Protected Sub btInstrumentosNec_Click(sender As Object, e As EventArgs) Handles btInstrumentosNec.Click
-        Response.Redirect("~/Contenidos/InstrumentosNecesarios.aspx")
     End Sub
 End Class
