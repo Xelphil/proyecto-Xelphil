@@ -11,16 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Formulario_web4
-    
-    '''<summary>
-    '''Control pnBuscador.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents pnBuscador As Global.System.Web.UI.WebControls.Panel
+Partial Public Class Formulario_web14
     
     '''<summary>
     '''Control pnBuscar.
@@ -113,58 +104,103 @@ Partial Public Class Formulario_web4
     Protected WithEvents pnDatos As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lbNombre.
+    '''Control lbIdCatTrab.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbNombre As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbIdCatTrab As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control tbNombre.
+    '''Control ddlIdCatTrab.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tbNombre As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ddlIdCatTrab As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''Control rfvnombre.
+    '''Control SqlDSCatdeTrabajo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents rfvnombre As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    Protected WithEvents SqlDSCatdeTrabajo As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
-    '''Control lbPrecio.
+    '''Control rfvIdCatTrab.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbPrecio As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents rfvIdCatTrab As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
-    '''Control tbPrecio.
+    '''Control lbCantidadInstrumentos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tbPrecio As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbCantidadInstrumentos As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control rfvprecio.
+    '''Control tbCantidadInstrumentos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents rfvprecio As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    Protected WithEvents tbCantidadInstrumentos As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control RFVCantidadinstrumentos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RFVCantidadinstrumentos As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
+    '''Control lbTipoIntru.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbTipoIntru As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control ddlTipoIntru.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlTipoIntru As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control SqlDSInstrumentos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDSInstrumentos As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''Control rfvTipoIntru.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents rfvTipoIntru As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''Control btGuardar.
@@ -183,13 +219,4 @@ Partial Public Class Formulario_web4
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btCancelar As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control btInstrumentosNec.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btInstrumentosNec As Global.System.Web.UI.WebControls.Button
 End Class
