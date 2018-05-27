@@ -14,6 +14,8 @@ Public Class Formulario_web1
                 MsgBox("user")
                 pnBuscador.Visible = False
                 btCrear.Visible = False
+                btModificar.Enabled = True
+                btBorrar.Visible = False
                 MsgBox(Session("DatosUsuario"))
                 Dim idCliente = Session("DatosUsuario").ToString.Split("#")(3)
                 Dim sentenciaCliente As String = "select * from Musicos where id=@id"
@@ -39,7 +41,6 @@ Public Class Formulario_web1
         pnDatos.Enabled = False
         listarMusicos()
         btCrear.Enabled = True
-        btModificar.Enabled = False
         btBorrar.Enabled = False
     End Sub
 
@@ -72,34 +73,67 @@ Public Class Formulario_web1
                 Response.Redirect("~/Contenidos/Musicos.aspx")
             End Try
         Else
-            'update
-            MsgBox(Session("modifica").ToString)
-            MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
-            Dim cnxInsert As New SqlConnection(cadena)
-            Dim sentenciaInsert As String = "update Musicos set nombre=@nombre,apellidos=@apellidos,direccion=@direccion,ciudad=@ciudad,coche=@coche,disponibilidad=@disponibilidad,categoriamusico=@categoriamusico where id=@id"
-            Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
-            cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
-            cmdInsert.Parameters.AddWithValue("@nombre", tbNombre.Text)
-            cmdInsert.Parameters.AddWithValue("@apellidos", tbApellidos.Text)
-            cmdInsert.Parameters.AddWithValue("@direccion", tbDireccion.Text)
-            cmdInsert.Parameters.AddWithValue("@ciudad", tbCiudad.Text)
-            cmdInsert.Parameters.AddWithValue("@coche", cbCoche.Checked)
-            cmdInsert.Parameters.AddWithValue("@disponibilidad", cbDisponibilidad.Checked)
-            cmdInsert.Parameters.AddWithValue("@categoriamusico", ddlCategoriaMusico.SelectedValue)
-            Try
-                cnxInsert.Open()
-                If cnxInsert.State = Data.ConnectionState.Open Then
-                    cmdInsert.ExecuteNonQuery()
-                    cmdInsert.Parameters.Clear()
+            If Session("rolAdmin") = True Then
+                MsgBox("admin")
+                MsgBox(Session("DatosUsuario"))
+                MsgBox(Session("modifica").ToString)
+                MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+                Dim cnxInsert As New SqlConnection(cadena)
+                Dim sentenciaInsert As String = "update Musicos set nombre=@nombre,apellidos=@apellidos,direccion=@direccion,ciudad=@ciudad,coche=@coche,disponibilidad=@disponibilidad,categoriamusico=@categoriamusico where id=@id"
+                Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
+                cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
+                cmdInsert.Parameters.AddWithValue("@nombre", tbNombre.Text)
+                cmdInsert.Parameters.AddWithValue("@apellidos", tbApellidos.Text)
+                cmdInsert.Parameters.AddWithValue("@direccion", tbDireccion.Text)
+                cmdInsert.Parameters.AddWithValue("@ciudad", tbCiudad.Text)
+                cmdInsert.Parameters.AddWithValue("@coche", cbCoche.Checked)
+                cmdInsert.Parameters.AddWithValue("@disponibilidad", cbDisponibilidad.Checked)
+                cmdInsert.Parameters.AddWithValue("@categoriamusico", ddlCategoriaMusico.SelectedValue)
+                Try
+                    cnxInsert.Open()
+                    If cnxInsert.State = Data.ConnectionState.Open Then
+                        cmdInsert.ExecuteNonQuery()
+                        cmdInsert.Parameters.Clear()
 
-                End If
-            Catch ex As Exception
-                Throw New Exception(ex.Message)
-            Finally
-                cnxInsert.Close()
-                cnxInsert.Dispose()
-                Response.Redirect("~/Contenidos/Musicos.aspx")
-            End Try
+                    End If
+                Catch ex As Exception
+                    Throw New Exception(ex.Message)
+                Finally
+                    cnxInsert.Close()
+                    cnxInsert.Dispose()
+                    Response.Redirect("~/Contenidos/Musicos.aspx")
+                End Try
+            Else
+                MsgBox(Session("modifica").ToString)
+                'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+                Dim cnxInsert As New SqlConnection(cadena)
+                Dim sentenciaInsert As String = "update Musicos set nombre=@nombre,apellidos=@apellidos,direccion=@direccion,ciudad=@ciudad,coche=@coche,disponibilidad=@disponibilidad,categoriamusico=@categoriamusico where id=@id"
+                Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
+                cmdInsert.Parameters.AddWithValue("@id", Session("DatosUsuario").ToString.Split("#")(3))
+                cmdInsert.Parameters.AddWithValue("@nombre", tbNombre.Text)
+                cmdInsert.Parameters.AddWithValue("@apellidos", tbApellidos.Text)
+                cmdInsert.Parameters.AddWithValue("@direccion", tbDireccion.Text)
+                cmdInsert.Parameters.AddWithValue("@ciudad", tbCiudad.Text)
+                cmdInsert.Parameters.AddWithValue("@coche", cbCoche.Checked)
+                cmdInsert.Parameters.AddWithValue("@disponibilidad", cbDisponibilidad.Checked)
+                cmdInsert.Parameters.AddWithValue("@categoriamusico", ddlCategoriaMusico.SelectedValue)
+                Try
+                    cnxInsert.Open()
+                    If cnxInsert.State = Data.ConnectionState.Open Then
+                        cmdInsert.ExecuteNonQuery()
+                        cmdInsert.Parameters.Clear()
+
+                    End If
+                Catch ex As Exception
+                    Throw New Exception(ex.Message)
+                Finally
+                    cnxInsert.Close()
+                    cnxInsert.Dispose()
+                    Response.Redirect("~/Contenidos/Musicos.aspx")
+                End Try
+            End If
+            'update
+
         End If
     End Sub
     Protected Sub LimpiarCampos()

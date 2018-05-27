@@ -31,6 +31,6 @@
     End Sub
 
     Protected Sub btUsuarios_Click(sender As Object, e As EventArgs) Handles btUsuarios.Click
-
+        Response.Redirect("~/Contenidos/Usuarios.aspx")
     End Sub
 End Class

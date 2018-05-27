@@ -22,10 +22,11 @@
                     <asp:BoundField DataField="musico" HeaderText="Cod. el Músico" SortExpression="musico" />
                 </Columns>
             </asp:GridView>
-        <asp:Button ID="btCrear" runat="server" Text="Crear Usuario" />
+        </asp:Panel>
+    <asp:Button ID="btCrear" runat="server" Text="Crear Usuario" />
         <asp:Button ID="btModificar" runat="server" Text="Modificar Usuario" />
         <asp:Button ID="btBorrar" runat="server" Text="Borrar Usuario" />
-        </asp:Panel>
+        
     <br />
    <asp:Panel ID="pnDatos" runat="server">
     <asp:Label ID="lbUsuario" runat="server" Text="Usuario: "></asp:Label>

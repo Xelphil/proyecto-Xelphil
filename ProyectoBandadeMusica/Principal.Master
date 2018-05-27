@@ -6,9 +6,9 @@
 <head runat="server">
     <title></title>
     <style>
-        form{
+        /*form{
             background-image:url(~/Ent_Cliente/Imagenes/fondo-de-pentagrama.jpg)
-        }
+        }*/
     </style>
 </head>
 <body>

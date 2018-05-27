@@ -27,10 +27,10 @@
                     <asp:BoundField DataField="instrumento" HeaderText="Instrumento del Músico" SortExpression="instrumento" />
                 </Columns>
             </asp:GridView>
+        </asp:Panel>
         <asp:Button ID="btCrear" runat="server" Text="Crear Músico" />
         <asp:Button ID="btModificar" runat="server" Text="Modificar Músico" />
         <asp:Button ID="btBorrar" runat="server" Text="Borrar Músico" />
-        </asp:Panel>
     <br />
    <asp:Panel ID="pnDatos" runat="server">
     <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
