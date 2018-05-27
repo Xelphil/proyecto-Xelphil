@@ -113,22 +113,22 @@ Partial Public Class Formulario_web1
     Protected WithEvents pnDatos As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lbUsuario.
+    '''Control lbNombre.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbUsuario As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbNombre As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control tbUsuario.
+    '''Control tbNombre.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tbUsuario As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tbNombre As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control rfvNombre.
@@ -140,22 +140,22 @@ Partial Public Class Formulario_web1
     Protected WithEvents rfvNombre As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
-    '''Control lbPass1.
+    '''Control lbApellidos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbPass1 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbApellidos As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control tbPass1.
+    '''Control tbApellidos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tbPass1 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tbApellidos As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control rfvApellidos.
@@ -167,49 +167,58 @@ Partial Public Class Formulario_web1
     Protected WithEvents rfvApellidos As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
-    '''Control lbPass2.
+    '''Control lbDireccion.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbPass2 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbDireccion As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control tbPass2.
+    '''Control tbDireccion.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tbPass2 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tbDireccion As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control RequiredFieldValidator1.
+    '''Control rfvDireccion.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents RequiredFieldValidator1 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    Protected WithEvents rfvDireccion As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
-    '''Control lbAdmin.
+    '''Control lbCiudad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbAdmin As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbCiudad As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control tbAdmin.
+    '''Control tbCiudad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tbAdmin As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tbCiudad As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control rfvCiudad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents rfvCiudad As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''Control lbCoche.
@@ -228,6 +237,60 @@ Partial Public Class Formulario_web1
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents cbCoche As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''Control lbDisponibilidad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbDisponibilidad As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control cbDisponibilidad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cbDisponibilidad As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
+    '''Control lbCategoriaMusico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbCategoriaMusico As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control ddlCategoriaMusico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlCategoriaMusico As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control SqlDSCategoriaMusico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDSCategoriaMusico As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''Control SqlDSBandadeMusica.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDSBandadeMusica As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
     '''Control btGuardar.
