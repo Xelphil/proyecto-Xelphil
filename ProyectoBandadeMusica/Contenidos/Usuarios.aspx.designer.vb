@@ -203,31 +203,49 @@ Partial Public Class Formulario_web5
     Protected WithEvents lbAdmin As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control tbAdmin.
+    '''Control cbAdmin.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tbAdmin As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents cbAdmin As Global.System.Web.UI.WebControls.CheckBox
     
     '''<summary>
-    '''Control lbCoche.
+    '''Control lbMusico.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbCoche As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbMusico As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control cbCoche.
+    '''Control ddlMusico.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents cbCoche As Global.System.Web.UI.WebControls.CheckBox
+    Protected WithEvents ddlMusico As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control SqlDSMusicos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDSMusicos As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''Control RequiredFieldValidator2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator2 As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''Control btGuardar.

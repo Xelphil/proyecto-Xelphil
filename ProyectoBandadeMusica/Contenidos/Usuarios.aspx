@@ -36,17 +36,20 @@
     <asp:TextBox ID="tbPass1" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="rfvApellidos" runat="server" ErrorMessage="Se requiere introducir la contraseña" ControlToValidate="tbPass1" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
-       <asp:Label ID="lbPass2" runat="server" Text="Contraseña: "></asp:Label>
+    <asp:Label ID="lbPass2" runat="server" Text="Repite Contraseña: "></asp:Label>
     <asp:TextBox ID="tbPass2" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Se requiere introducir la confirmación de la contraseña" ControlToValidate="tbPass2" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbAdmin" runat="server" Text="Admin: "></asp:Label>
-    <asp:TextBox ID="tbAdmin" runat="server"></asp:TextBox>
+    <asp:CheckBox ID="cbAdmin" runat="server" />
     <br />
-    <asp:Label ID="lbCoche" runat="server" Text="Coche: "></asp:Label>
-    <asp:CheckBox ID="cbCoche" runat="server" />
+    <asp:Label ID="lbMusico" runat="server" Text="Musico: "></asp:Label>
+    <asp:DropDownList ID="ddlMusico" runat="server" DataSourceID="SqlDSMusicos" DataTextField="nombre" DataValueField="id"></asp:DropDownList>
+       <asp:SqlDataSource ID="SqlDSMusicos" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="SELECT [id], [nombre] FROM [Musicos]"></asp:SqlDataSource>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Se requiere introducir la confirmación de la contraseña" ControlToValidate="tbPass2" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Button ID="btGuardar" runat="server" Text="Guardar" ValidationGroup="DatosMusico"/>
     <asp:Button ID="btCancelar" runat="server" Text="Cancelar" />
+    <br /> 
    </asp:Panel>
 </asp:Content>
