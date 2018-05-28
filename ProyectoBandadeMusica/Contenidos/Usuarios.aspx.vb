@@ -8,15 +8,15 @@ Public Class Formulario_web5
             Response.Redirect("~/Inicio.aspx")
         Else
             If Session("rolAdmin") = True Then
-                MsgBox("admin")
-                MsgBox(Session("DatosUsuario"))
+                'MsgBox("admin")
+                'MsgBox(Session("DatosUsuario"))
             Else
-                MsgBox("user")
+                'MsgBox("user")
                 pnBuscador.Visible = False
                 btCrear.Visible = False
                 btModificar.Enabled = True
                 btBorrar.Visible = False
-                MsgBox(Session("DatosUsuario"))
+
                 Dim idCliente = Session("DatosUsuario").ToString.Split("#")(0)
                 Dim sentenciaCliente As String = "select * from Usuarios where id=@id"
                 Dim cnxCliente As New SqlConnection(cadena)
@@ -43,7 +43,7 @@ Public Class Formulario_web5
     End Sub
 
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
-        MsgBox(Session("modifica").ToString)
+
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "insert into Usuarios(usuario,contraseña,admin,musico) values(@usuario,@contraseña,@admin,@musico)"
@@ -70,10 +70,10 @@ Public Class Formulario_web5
         Else
             'update
             If Session("rolAdmin") = True Then
-                MsgBox("admin")
-                MsgBox(Session("DatosUsuario"))
-                MsgBox(Session("modifica").ToString)
-                MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+                'MsgBox("admin")
+                'MsgBox(Session("DatosUsuario"))
+                'MsgBox(Session("modifica").ToString)
+                'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
                 Dim cnxInsert As New SqlConnection(cadena)
                 Dim sentenciaInsert As String = "update Usuarios set usuario=@usuario,contraseña=@contraseña,admin=@admin,musico=@musico where id=@id"
                 Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -98,6 +98,7 @@ Public Class Formulario_web5
                 End Try
             Else
                 MsgBox(Session("modifica").ToString)
+                MsgBox(Session("DatosUsuario").ToString.Split("#")(0))
                 Dim cnxInsert As New SqlConnection(cadena)
                 Dim sentenciaInsert As String = "update Usuarios set usuario=@usuario,contraseña=@contraseña,admin=@admin,musico=@musico where id=@id"
                 Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -171,24 +172,21 @@ Public Class Formulario_web5
         tbPass2.Text = fila("contraseña").ToString
         cbAdmin.Checked = fila("admin")
         ddlMusico.SelectedIndex = -1
-        ddlMusico.Items.FindByText(fila("musico").ToString).Selected = True
+        ddlMusico.SelectedValue = fila("musico").ToString
 
     End Sub
 
     Protected Sub btBusqueda_Click(sender As Object, e As EventArgs) Handles btBusqueda.Click
-        Dim sentenciaBuscar As String = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"
+        Dim sentenciaBuscar As String = "select id,usuario,contraseña,admin,musico from Usuarios"
         If Not tbBuscar.Text = Nothing Then
             If ddlBuscar.SelectedValue = 1 Then
-                sentenciaBuscar = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.nombre like '%" & tbBuscar.Text & "%'"
+                sentenciaBuscar = "select id,usuario,contraseña,admin,musico from Usuarios where usuario like '%" & tbBuscar.Text & "%'"
             End If
             If ddlBuscar.SelectedValue = 2 Then
-                sentenciaBuscar = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.coche = " & tbBuscar.Text & ""
+                sentenciaBuscar = "select id,usuario,contraseña,admin,musico from Usuarios where admin like '%" & tbBuscar.Text & "%'"
             End If
             If ddlBuscar.SelectedValue = 3 Then
-                sentenciaBuscar = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.disponibilidad = " & tbBuscar.Text & ""
-            End If
-            If ddlBuscar.SelectedValue = 4 Then
-                sentenciaBuscar = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.categoriamusico = " & tbBuscar.Text & ""
+                sentenciaBuscar = "select id,usuario,contraseña,admin,musico from Usuarios where musico like '%" & tbBuscar.Text & "%'"
             End If
             Dim cnxBuscar As New SqlConnection(cadena)
             Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
