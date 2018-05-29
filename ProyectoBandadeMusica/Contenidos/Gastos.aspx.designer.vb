@@ -203,6 +203,33 @@ Partial Public Class Formulario_web15
     Protected WithEvents cbpagado As Global.System.Web.UI.WebControls.CheckBox
     
     '''<summary>
+    '''Control lbTrabajo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbTrabajo As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control ddlTrabajo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlTrabajo As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control SqlDStrabajo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDStrabajo As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
     '''Control lbmusicocongasto.
     '''</summary>
     '''<remarks>

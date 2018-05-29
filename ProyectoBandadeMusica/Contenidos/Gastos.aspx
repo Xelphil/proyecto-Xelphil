@@ -19,8 +19,9 @@
                     <asp:BoundField DataField="NombredelGasto" HeaderText="Nombre del Gasto" SortExpression="NombredelGasto" />
                     <asp:BoundField DataField="descripcion" HeaderText="Descripcion del Gasto" SortExpression="descripcion" />
                     <asp:BoundField DataField="Fecha" HeaderText="Fecha del Gasto" SortExpression="Fecha" />
-                    <asp:BoundField DataField="pagado" HeaderText="¿Gasto Pagado?" SortExpression="pagado" />
-                    <asp:CheckBoxField DataField="musicocongasto" HeaderText="¿Gasto del Musico?" SortExpression="musicocongasto" />
+                    <asp:CheckBoxField DataField="pagado" HeaderText="¿Gasto Pagado?" SortExpression="pagado" />
+                    <asp:BoundField DataField="trabajo" HeaderText="Trabajo al que pertenece el gasto" SortExpression="trabajo" />
+                    <asp:BoundField DataField="musicocongasto" HeaderText="¿Gasto del Musico?" SortExpression="musicocongasto" />
                 </Columns>
             </asp:GridView>
         </asp:Panel>
@@ -42,6 +43,10 @@
     <br />
     <asp:Label ID="lbpagado" runat="server" Text="Ciudad: "></asp:Label>
     <asp:CheckBox ID="cbpagado" runat="server" />
+    <br />
+       <asp:Label ID="lbTrabajo" runat="server" Text="Trabajo al que pertenece el gasto: "></asp:Label>
+    <asp:DropDownList ID="ddlTrabajo" runat="server" DataSourceID="SqlDStrabajo" DataTextField="nombre" DataValueField="id"></asp:DropDownList>
+       <asp:SqlDataSource ID="SqlDStrabajo" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="SELECT [id], [nombre] FROM [Trabajo]"></asp:SqlDataSource>
     <br />
     <asp:Label ID="lbmusicocongasto" runat="server" Text="Musico con gasto: "></asp:Label>
     <asp:DropDownList ID="ddlmusicocongasto" runat="server" DataSourceID="SqlDSmusicocongasto" DataTextField="nombre" DataValueField="id">

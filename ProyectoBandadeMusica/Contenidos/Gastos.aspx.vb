@@ -27,14 +27,14 @@ Public Class Formulario_web15
                 adaptadorCliente.Fill(dt)
                 Dim fila As DataRow = dt.Rows(0)
 
-                tbNombre.Text = fila("nombre").ToString
-                tbApellidos.Text = fila("apellidos").ToString
-                tbCiudad.Text = fila("ciudad").ToString
-                tbDireccion.Text = fila("direccion").ToString
-                cbCoche.Checked = fila("coche")
-                cbDisponibilidad.Checked = fila("disponibilidad")
-                ddlCategoriaMusico.SelectedIndex = -1
-                ddlCategoriaMusico.SelectedValue = fila("categoriamusico")
+                tbNombre.Text = fila("NombredelGasto").ToString
+                tbdescripcion.Text = fila("descripcion").ToString
+                clFecha.SelectedDate = fila("Fecha").ToString
+                cbpagado.Checked = fila("pagado")
+                ddlTrabajo.SelectedIndex = -1
+                ddlTrabajo.SelectedValue = fila("trabajo")
+                ddlmusicocongasto.SelectedIndex = -1
+                ddlmusicocongasto.SelectedValue = fila("musicocongasto")
             End If
         End If
 
@@ -48,15 +48,14 @@ Public Class Formulario_web15
         MsgBox(Session("modifica").ToString)
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
-            Dim sentenciaInsert As String = "insert into Musicos(nombre,apellidos,direccion,ciudad,coche,disponibilidad,categoriamusico) values(@nombre,@apellidos,@direccion,@ciudad,@coche,@disponibilidad,@categoriamusico)"
+            Dim sentenciaInsert As String = "insert into Gastos(NombredelGasto,descripcion,Fecha,pagado,trabajo,musicocongasto) values(@NombredelGasto,@descripcion,@Fecha,@pagado,@trabajo,@musicocongasto)"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
-            cmdInsert.Parameters.AddWithValue("@nombre", tbNombre.Text)
-            cmdInsert.Parameters.AddWithValue("@apellidos", tbApellidos.Text)
-            cmdInsert.Parameters.AddWithValue("@direccion", tbDireccion.Text)
-            cmdInsert.Parameters.AddWithValue("@ciudad", tbCiudad.Text)
-            cmdInsert.Parameters.AddWithValue("@coche", cbCoche.Checked)
-            cmdInsert.Parameters.AddWithValue("@disponibilidad", cbDisponibilidad.Checked)
-            cmdInsert.Parameters.AddWithValue("@categoriamusico", ddlCategoriaMusico.SelectedValue)
+            cmdInsert.Parameters.AddWithValue("@NombredelGasto", tbNombre.Text)
+            cmdInsert.Parameters.AddWithValue("@descripcion", tbdescripcion.Text)
+            cmdInsert.Parameters.AddWithValue("@Fecha", clFecha.SelectedDate)
+            cmdInsert.Parameters.AddWithValue("@pagado", cbpagado.Checked)
+            cmdInsert.Parameters.AddWithValue("@trabajo", ddlTrabajo.SelectedValue)
+            cmdInsert.Parameters.AddWithValue("@musicocongasto", ddlmusicocongasto.SelectedValue)
             Try
                 cnxInsert.Open()
                 If cnxInsert.State = Data.ConnectionState.Open Then
@@ -70,7 +69,7 @@ Public Class Formulario_web15
                 cnxInsert.Close()
                 cnxInsert.Dispose()
 
-                Response.Redirect("~/Contenidos/Musicos.aspx")
+                Response.Redirect("~/Contenidos/Gastos.aspx")
             End Try
         Else
             If Session("rolAdmin") = True Then
@@ -79,16 +78,15 @@ Public Class Formulario_web15
                 MsgBox(Session("modifica").ToString)
                 MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
                 Dim cnxInsert As New SqlConnection(cadena)
-                Dim sentenciaInsert As String = "update Musicos set nombre=@nombre,apellidos=@apellidos,direccion=@direccion,ciudad=@ciudad,coche=@coche,disponibilidad=@disponibilidad,categoriamusico=@categoriamusico where id=@id"
+                Dim sentenciaInsert As String = "update Gastos set NombredelGasto=@NombredelGasto,descripcion=@descripcion,Fecha=@Fecha,pagado=@pagado,trabajo=@trabajo,musicocongasto=@musicocongasto where id=@id"
                 Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
                 cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
-                cmdInsert.Parameters.AddWithValue("@nombre", tbNombre.Text)
-                cmdInsert.Parameters.AddWithValue("@apellidos", tbApellidos.Text)
-                cmdInsert.Parameters.AddWithValue("@direccion", tbDireccion.Text)
-                cmdInsert.Parameters.AddWithValue("@ciudad", tbCiudad.Text)
-                cmdInsert.Parameters.AddWithValue("@coche", cbCoche.Checked)
-                cmdInsert.Parameters.AddWithValue("@disponibilidad", cbDisponibilidad.Checked)
-                cmdInsert.Parameters.AddWithValue("@categoriamusico", ddlCategoriaMusico.SelectedValue)
+                cmdInsert.Parameters.AddWithValue("@NombredelGasto", tbNombre.Text)
+                cmdInsert.Parameters.AddWithValue("@descripcion", tbdescripcion.Text)
+                cmdInsert.Parameters.AddWithValue("@Fecha", clFecha.SelectedDate)
+                cmdInsert.Parameters.AddWithValue("@pagado", cbpagado.Checked)
+                cmdInsert.Parameters.AddWithValue("@trabajo", ddlTrabajo.SelectedValue)
+                cmdInsert.Parameters.AddWithValue("@musicocongasto", ddlmusicocongasto.SelectedValue)
                 Try
                     cnxInsert.Open()
                     If cnxInsert.State = Data.ConnectionState.Open Then
@@ -101,22 +99,21 @@ Public Class Formulario_web15
                 Finally
                     cnxInsert.Close()
                     cnxInsert.Dispose()
-                    Response.Redirect("~/Contenidos/Musicos.aspx")
+                    Response.Redirect("~/Contenidos/Gastos.aspx")
                 End Try
             Else
                 MsgBox(Session("modifica").ToString)
                 'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
                 Dim cnxInsert As New SqlConnection(cadena)
-                Dim sentenciaInsert As String = "update Musicos set nombre=@nombre,apellidos=@apellidos,direccion=@direccion,ciudad=@ciudad,coche=@coche,disponibilidad=@disponibilidad,categoriamusico=@categoriamusico where id=@id"
+                Dim sentenciaInsert As String = "update Gastos set NombredelGasto=@NombredelGasto,descripcion=@descripcion,Fecha=@Fecha,pagado=@pagado,trabajo=@trabajo,musicocongasto=@musicocongasto where id=@id"
                 Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
                 cmdInsert.Parameters.AddWithValue("@id", Session("DatosUsuario").ToString.Split("#")(3))
-                cmdInsert.Parameters.AddWithValue("@nombre", tbNombre.Text)
-                cmdInsert.Parameters.AddWithValue("@apellidos", tbApellidos.Text)
-                cmdInsert.Parameters.AddWithValue("@direccion", tbDireccion.Text)
-                cmdInsert.Parameters.AddWithValue("@ciudad", tbCiudad.Text)
-                cmdInsert.Parameters.AddWithValue("@coche", cbCoche.Checked)
-                cmdInsert.Parameters.AddWithValue("@disponibilidad", cbDisponibilidad.Checked)
-                cmdInsert.Parameters.AddWithValue("@categoriamusico", ddlCategoriaMusico.SelectedValue)
+                cmdInsert.Parameters.AddWithValue("@NombredelGasto", tbNombre.Text)
+                cmdInsert.Parameters.AddWithValue("@descripcion", tbdescripcion.Text)
+                cmdInsert.Parameters.AddWithValue("@Fecha", clFecha.SelectedDate)
+                cmdInsert.Parameters.AddWithValue("@pagado", cbpagado.Checked)
+                cmdInsert.Parameters.AddWithValue("@trabajo", ddlTrabajo.SelectedValue)
+                cmdInsert.Parameters.AddWithValue("@musicocongasto", ddlmusicocongasto.SelectedValue)
                 Try
                     cnxInsert.Open()
                     If cnxInsert.State = Data.ConnectionState.Open Then
@@ -129,7 +126,7 @@ Public Class Formulario_web15
                 Finally
                     cnxInsert.Close()
                     cnxInsert.Dispose()
-                    Response.Redirect("~/Contenidos/Musicos.aspx")
+                    Response.Redirect("~/Contenidos/Gastos.aspx")
                 End Try
             End If
             'update
@@ -138,14 +135,11 @@ Public Class Formulario_web15
     End Sub
     Protected Sub LimpiarCampos()
         tbNombre.Text = ""
-        tbApellidos.Text = ""
-        tbCiudad.Text = ""
-        tbDireccion.Text = ""
-
-        cbCoche.Checked = False
-        cbDisponibilidad.Checked = False
-
-        ddlCategoriaMusico.SelectedIndex = -1
+        tbdescripcion.Text = ""
+        clFecha.SelectedDate = clFecha.TodaysDate
+        cbpagado.Checked = False
+        ddlmusicocongasto.SelectedIndex = -1
+        ddlTrabajo.SelectedIndex = -1
     End Sub
     Public Sub listarMusicos()
         Dim sentenciaBuscar As String = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"
@@ -237,7 +231,7 @@ Public Class Formulario_web15
             cnxInsert.Close()
             cnxInsert.Dispose()
             LimpiarCampos()
-            Response.Redirect("~/Contenidos/Musicos.aspx")
+            Response.Redirect("~/Contenidos/Gastos.aspx")
         End Try
     End Sub
 
