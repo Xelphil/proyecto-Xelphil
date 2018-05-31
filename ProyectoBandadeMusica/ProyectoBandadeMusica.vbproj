@@ -121,6 +121,7 @@
   <ItemGroup>
     <Content Include="Contenidos\InstrumentosNecesarios.aspx" />
     <Content Include="Contenidos\Gastos.aspx" />
+    <Content Include="Contenidos\Trabajos.aspx" />
     <Content Include="Contenidos\Principal.aspx" />
     <Content Include="Contenidos\CategoriaTrabajo.aspx" />
     <Content Include="Contenidos\Instrumentos.aspx" />
@@ -145,6 +146,13 @@
     </Compile>
     <Compile Include="Contenidos\Gastos.aspx.vb">
       <DependentUpon>Gastos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Contenidos\Trabajos.aspx.designer.vb">
+      <DependentUpon>Trabajos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos\Trabajos.aspx.vb">
+      <DependentUpon>Trabajos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Contenidos\Principal.aspx.designer.vb">

@@ -23,7 +23,7 @@
     End Sub
 
     Protected Sub btTrabajos_Click(sender As Object, e As EventArgs) Handles btTrabajos.Click
-
+        Response.Redirect("~/Contenidos/Trabajos.aspx")
     End Sub
 
     Protected Sub btGastos_Click(sender As Object, e As EventArgs) Handles btGastos.Click
