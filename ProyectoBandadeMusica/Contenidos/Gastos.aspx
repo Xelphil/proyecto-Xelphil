@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Principal.Master" CodeBehind="Gastos.aspx.vb" Inherits="ProyectoBandadeMusica.Formulario_web15" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Músicos</h1>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
      <asp:Panel ID="pnBuscador" runat="server">
             <asp:Panel ID="pnBuscar" runat="server">
                 <asp:Label ID="lbBuscar" runat="server" Text="Buscar por: "></asp:Label>
@@ -37,11 +38,24 @@
     <asp:Label ID="lbdescripcion" runat="server" Text="Descripcion: "></asp:Label>
     <asp:TextBox ID="tbdescripcion" runat="server"></asp:TextBox>
     <br />
-    <asp:Label ID="lbFecha" runat="server" Text="Direccion: "></asp:Label>
-    <asp:Calendar ID="clFecha" runat="server"></asp:Calendar>
-    <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="Se requiere introducir la fecha del gasto" ControlToValidate="tbDireccion" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
-    <br />
-    <asp:Label ID="lbpagado" runat="server" Text="Ciudad: "></asp:Label>
+    
+       <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="lbFecha" runat="server" Text="Fecha: "></asp:Label>
+                <asp:Calendar ID="clFecha" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px">
+                    <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                    <NextPrevStyle VerticalAlign="Bottom" />
+                    <OtherMonthDayStyle ForeColor="#808080" />
+                    <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                    <SelectorStyle BackColor="#CCCCCC" />
+                    <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+                    <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                    <WeekendDayStyle BackColor="#FFFFCC" />
+                   </asp:Calendar>
+                <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="Se requiere introducir una fecha del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    <asp:Label ID="lbpagado" runat="server" Text="¿Pagado?: "></asp:Label>
     <asp:CheckBox ID="cbpagado" runat="server" />
     <br />
        <asp:Label ID="lbTrabajo" runat="server" Text="Trabajo al que pertenece el gasto: "></asp:Label>

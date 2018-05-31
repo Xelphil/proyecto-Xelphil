@@ -18,7 +18,7 @@ Public Class Formulario_web15
                 btBorrar.Visible = False
                 MsgBox(Session("DatosUsuario"))
                 Dim idCliente = Session("DatosUsuario").ToString.Split("#")(3)
-                Dim sentenciaCliente As String = "select * from Musicos where id=@id"
+                Dim sentenciaCliente As String = "select * from Gastos where id=@id"
                 Dim cnxCliente As New SqlConnection(cadena)
                 Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
                 cmdCliente.Parameters.AddWithValue("@id", idCliente)
@@ -142,7 +142,7 @@ Public Class Formulario_web15
         ddlTrabajo.SelectedIndex = -1
     End Sub
     Public Sub listarMusicos()
-        Dim sentenciaBuscar As String = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"
+        Dim sentenciaBuscar As String = "select * from Gastos"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
         'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
@@ -166,7 +166,7 @@ Public Class Formulario_web15
         btCrear.Enabled = False
 
         Dim idCliente = gvMusicos.SelectedDataKey.Value
-        Dim sentenciaCliente As String = "select * from Musicos where id=@id"
+        Dim sentenciaCliente As String = "select * from Gastos where id=@id"
         Dim cnxCliente As New SqlConnection(cadena)
         Dim cmdCliente As New SqlCommand(sentenciaCliente, cnxCliente)
         cmdCliente.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
@@ -175,31 +175,28 @@ Public Class Formulario_web15
         adaptadorCliente.Fill(dt)
         Dim fila As DataRow = dt.Rows(0)
 
-        tbNombre.Text = fila("nombre").ToString
-        tbApellidos.Text = fila("apellidos").ToString
-        tbCiudad.Text = fila("ciudad").ToString
-        tbDireccion.Text = fila("direccion").ToString
-        cbCoche.Checked = fila("coche")
-        cbDisponibilidad.Checked = fila("disponibilidad")
-        ddlCategoriaMusico.SelectedIndex = -1
-        ddlCategoriaMusico.SelectedValue = fila("categoriamusico")
+        tbNombre.Text = fila("NombredelGasto").ToString
+        tbdescripcion.Text = fila("descripcion").ToString
+        clFecha.SelectedDate = fila("Fecha").ToString
+        cbpagado.Checked = fila("pagado")
+        ddlTrabajo.SelectedIndex = -1
+        ddlTrabajo.SelectedValue = fila("trabajo")
+        ddlmusicocongasto.SelectedIndex = -1
+        ddlmusicocongasto.SelectedValue = fila("musicocongasto")
 
     End Sub
 
     Protected Sub btBusqueda_Click(sender As Object, e As EventArgs) Handles btBusqueda.Click
-        Dim sentenciaBuscar As String = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"
+        Dim sentenciaBuscar As String = "select * from Gastos"
         If Not tbBuscar.Text = Nothing Then
             If ddlBuscar.SelectedValue = 1 Then
-                sentenciaBuscar = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.nombre like '%" & tbBuscar.Text & "%'"
+                sentenciaBuscar = "select * from Gastos where NombredelGasto like '%" & tbBuscar.Text & "%'"
             End If
             If ddlBuscar.SelectedValue = 2 Then
-                sentenciaBuscar = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.coche = " & tbBuscar.Text & ""
+                sentenciaBuscar = "select * from Gastos where Fecha = " & tbBuscar.Text & ""
             End If
             If ddlBuscar.SelectedValue = 3 Then
-                sentenciaBuscar = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.disponibilidad = " & tbBuscar.Text & ""
-            End If
-            If ddlBuscar.SelectedValue = 4 Then
-                sentenciaBuscar = "select Musicos.id,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.categoriamusico = " & tbBuscar.Text & ""
+                sentenciaBuscar = "select * from Gastos where pagado = " & tbBuscar.Text & ""
             End If
             Dim cnxBuscar As New SqlConnection(cadena)
             Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
@@ -215,7 +212,7 @@ Public Class Formulario_web15
 
     Protected Sub btBorrar_Click(sender As Object, e As EventArgs) Handles btBorrar.Click
         Dim cnxInsert As New SqlConnection(cadena)
-        Dim sentenciaInsert As String = "delete from Musicos where id=@id"
+        Dim sentenciaInsert As String = "delete from Gastos where id=@id"
         Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
         cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value)
         Try

@@ -27,7 +27,7 @@
     End Sub
 
     Protected Sub btGastos_Click(sender As Object, e As EventArgs) Handles btGastos.Click
-
+        Response.Redirect("~/Contenidos/Gastos.aspx")
     End Sub
 
     Protected Sub btUsuarios_Click(sender As Object, e As EventArgs) Handles btUsuarios.Click
