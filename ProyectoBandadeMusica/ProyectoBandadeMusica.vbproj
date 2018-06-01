@@ -119,82 +119,122 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Contenidos\InstrumentosNecesarios.aspx" />
-    <Content Include="Contenidos\Gastos.aspx" />
-    <Content Include="Contenidos\Trabajos.aspx" />
-    <Content Include="Contenidos\Principal.aspx" />
-    <Content Include="Contenidos\CategoriaTrabajo.aspx" />
-    <Content Include="Contenidos\Instrumentos.aspx" />
-    <Content Include="Contenidos\CategoriaMusico.aspx" />
-    <Content Include="Contenidos\Usuarios.aspx" />
-    <Content Include="Contenidos\Musicos.aspx" />
+    <Content Include="Contenidos\Administrador\InstrumentosNecesarios.aspx" />
+    <Content Include="Contenidos\Administrador\Gastos.aspx" />
+    <Content Include="Contenidos\Administrador\Principal.aspx" />
+    <Content Include="Contenidos\Administrador\Trabajos.aspx" />
+    <Content Include="Contenidos\Usuarios\Gastos.aspx" />
+    <Content Include="Contenidos\Usuarios\Musicos.aspx" />
+    <Content Include="Contenidos\Usuarios\Principal.aspx" />
+    <Content Include="Contenidos\Usuarios\Usuarios.aspx" />
+    <Content Include="Contenidos\Visitante\Principal.aspx" />
+    <Content Include="Contenidos\Administrador\CategoriaTrabajo.aspx" />
+    <Content Include="Contenidos\Administrador\Instrumentos.aspx" />
+    <Content Include="Contenidos\Administrador\CategoriaMusico.aspx" />
+    <Content Include="Contenidos\Administrador\Usuarios.aspx" />
+    <Content Include="Contenidos\Administrador\Musicos.aspx" />
     <Content Include="Ent_Cliente\Imagenes\emblemmatic-bandademusica-logo-10.png" />
     <Content Include="Ent_Cliente\Imagenes\fondo-de-pentagrama.jpg" />
     <Content Include="Inicio.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contenidos\InstrumentosNecesarios.aspx.designer.vb">
+    <Compile Include="Contenidos\Administrador\InstrumentosNecesarios.aspx.designer.vb">
       <DependentUpon>InstrumentosNecesarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contenidos\InstrumentosNecesarios.aspx.vb">
+    <Compile Include="Contenidos\Administrador\InstrumentosNecesarios.aspx.vb">
       <DependentUpon>InstrumentosNecesarios.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Contenidos\Gastos.aspx.designer.vb">
+    <Compile Include="Contenidos\Administrador\Gastos.aspx.designer.vb">
       <DependentUpon>Gastos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contenidos\Gastos.aspx.vb">
+    <Compile Include="Contenidos\Administrador\Gastos.aspx.vb">
       <DependentUpon>Gastos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Contenidos\Trabajos.aspx.designer.vb">
-      <DependentUpon>Trabajos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contenidos\Trabajos.aspx.vb">
-      <DependentUpon>Trabajos.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="Contenidos\Principal.aspx.designer.vb">
+    <Compile Include="Contenidos\Administrador\Principal.aspx.designer.vb">
       <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contenidos\Principal.aspx.vb">
+    <Compile Include="Contenidos\Administrador\Principal.aspx.vb">
       <DependentUpon>Principal.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Contenidos\CategoriaTrabajo.aspx.designer.vb">
+    <Compile Include="Contenidos\Administrador\Trabajos.aspx.designer.vb">
+      <DependentUpon>Trabajos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos\Administrador\Trabajos.aspx.vb">
+      <DependentUpon>Trabajos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Contenidos\Usuarios\Gastos.aspx.designer.vb">
+      <DependentUpon>Gastos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos\Usuarios\Gastos.aspx.vb">
+      <DependentUpon>Gastos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Contenidos\Usuarios\Musicos.aspx.designer.vb">
+      <DependentUpon>Musicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos\Usuarios\Musicos.aspx.vb">
+      <DependentUpon>Musicos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Contenidos\Usuarios\Principal.aspx.designer.vb">
+      <DependentUpon>Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos\Usuarios\Principal.aspx.vb">
+      <DependentUpon>Principal.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Contenidos\Usuarios\Usuarios.aspx.designer.vb">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos\Usuarios\Usuarios.aspx.vb">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Contenidos\Visitante\Principal.aspx.designer.vb">
+      <DependentUpon>Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos\Visitante\Principal.aspx.vb">
+      <DependentUpon>Principal.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Contenidos\Administrador\CategoriaTrabajo.aspx.designer.vb">
       <DependentUpon>CategoriaTrabajo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contenidos\CategoriaTrabajo.aspx.vb">
+    <Compile Include="Contenidos\Administrador\CategoriaTrabajo.aspx.vb">
       <DependentUpon>CategoriaTrabajo.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Contenidos\EncriptarPass.vb" />
-    <Compile Include="Contenidos\Instrumentos.aspx.designer.vb">
+    <Compile Include="Contenidos\Administrador\Instrumentos.aspx.designer.vb">
       <DependentUpon>Instrumentos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contenidos\Instrumentos.aspx.vb">
+    <Compile Include="Contenidos\Administrador\Instrumentos.aspx.vb">
       <DependentUpon>Instrumentos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Contenidos\CategoriaMusico.aspx.designer.vb">
+    <Compile Include="Contenidos\Administrador\CategoriaMusico.aspx.designer.vb">
       <DependentUpon>CategoriaMusico.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contenidos\CategoriaMusico.aspx.vb">
+    <Compile Include="Contenidos\Administrador\CategoriaMusico.aspx.vb">
       <DependentUpon>CategoriaMusico.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Contenidos\Usuarios.aspx.designer.vb">
+    <Compile Include="Contenidos\Administrador\Usuarios.aspx.designer.vb">
       <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contenidos\Usuarios.aspx.vb">
+    <Compile Include="Contenidos\Administrador\Usuarios.aspx.vb">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Contenidos\Musicos.aspx.designer.vb">
+    <Compile Include="Contenidos\Administrador\Musicos.aspx.designer.vb">
       <DependentUpon>Musicos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contenidos\Musicos.aspx.vb">
+    <Compile Include="Contenidos\Administrador\Musicos.aspx.vb">
       <DependentUpon>Musicos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
