@@ -31,6 +31,7 @@
         <asp:Button ID="btModificar" runat="server" Text="Modificar Músico" />
         <asp:Button ID="btBorrar" runat="server" Text="Borrar Músico" />
     <br />
+    <%-- aaa --%>
    <asp:Panel ID="pnDatos" runat="server">
     <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
