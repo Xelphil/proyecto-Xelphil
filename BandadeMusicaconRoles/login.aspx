@@ -119,7 +119,7 @@ function maximizar()
 </head>
 <body onload="maximizar()">
     <form id="miForm" runat="server">
-        <div class="intro">
+        <div class="intro">        
              <div class="aviso">
                   <asp:Label ID="aviso" runat="server" Text="Iniciar sesión para acceder" />
              </div>

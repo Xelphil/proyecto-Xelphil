@@ -17,9 +17,13 @@
            <asp:Button ID="btTrabajos" runat="server" Text="Trabajos" />
            <asp:Button ID="btMusicos" runat="server" Text="Musicos" />
            <asp:Button ID="btGastos" runat="server" Text="Gastos" />
+           <asp:Button ID="btCatTrab" runat="server" Text="Categoría Trabajos" />
+           <asp:Button ID="btCatMus" runat="server" Text="Categoría Musicos" />
+           <asp:Button ID="btInstrumentos" runat="server" Text="Instrumentos" />
+           <asp:Button ID="btUsuarios" runat="server" Text="Usuarios" />
        </nav>
         <section>
-            <h1>Bienvenido a la aplicación <asp:Label ID="Label1" runat="server" Text=""></asp:Label></h1>
+            <h1>Bienvenido a la aplicación</h1>
         </section>
     </div>
     </form>

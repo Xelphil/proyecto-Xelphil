@@ -11,7 +11,7 @@
     <div>
         <div>
             <asp:Image ID="imgLogo" runat="server" ImageUrl="~/imagenes/emblemmatic-bandademusica-logo-10.png"/>
-            <asp:Button ID="btCerrarSesion" runat="server" Text="Volver al login" />
+            <asp:Button ID="Button1" runat="server" Text="Volver al sistema de acceso" />
         </div>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
             <Columns>

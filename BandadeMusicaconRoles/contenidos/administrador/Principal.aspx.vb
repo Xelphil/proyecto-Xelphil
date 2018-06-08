@@ -2,7 +2,7 @@
 Partial Class contenidos_administrador_Principal
     Inherits System.Web.UI.Page
     Private Sub contenidos_administrador_Principal_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Label1.Text = Session("dUsuario").Rows(0).item(1) & " " & Session("dUsuario").Rows(0).item(2)
+        MsgBox(Session("dUsuario").Rows(0).item(0).ToString)
     End Sub
     Protected Sub btMusicos_Click(sender As Object, e As EventArgs) Handles btMusicos.Click
         Response.Redirect("~/Contenidos/administrador/Musicos.aspx")
