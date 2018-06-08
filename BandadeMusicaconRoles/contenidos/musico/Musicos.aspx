@@ -19,52 +19,98 @@
            <asp:Button ID="btGastos" runat="server" Text="Gastos" />
        </nav>
         <section>
-            <asp:Button ID="btModificar" runat="server" Text="Modificar Músico" />
+            <br />
+            <asp:FormView ID="fvMusico" runat="server" DataKeyNames="idMusico" DataSourceID="sqlDSmusico">
+                <EditItemTemplate>
+                    idMusico:
+                    <asp:Label ID="idMusicoLabel1" runat="server" Text='<%# Eval("idMusico") %>' />
+                    <br />
+                    nombre:
+                    <asp:TextBox ID="nombreTextBox" runat="server" Text='<%# Bind("nombre") %>' />
+                    <br />
+                    apellidos:
+                    <asp:TextBox ID="apellidosTextBox" runat="server" Text='<%# Bind("apellidos") %>' />
+                    <br />
+                    direccion:
+                    <asp:TextBox ID="direccionTextBox" runat="server" Text='<%# Bind("direccion") %>' />
+                    <br />
+                    ciudad:
+                    <asp:TextBox ID="ciudadTextBox" runat="server" Text='<%# Bind("ciudad") %>' />
+                    <br />
+                    coche:
+                    <asp:CheckBox ID="cocheCheckBox" runat="server" Checked='<%# Bind("coche") %>' />
+                    <br />
+                    disponibilidad:
+                    <asp:CheckBox ID="disponibilidadCheckBox" runat="server" Checked='<%# Bind("disponibilidad") %>' />
+                    <br />
+                    categoriamusico:
+                    <asp:TextBox ID="categoriamusicoTextBox" runat="server" Text='<%# Bind("categoriamusico") %>' />
+                    <br />
+                    usuario:
+                    <asp:TextBox ID="usuarioTextBox" runat="server" Text='<%# Bind("usuario") %>' />
+                    <br />
+                    password:
+                    <asp:TextBox ID="passwordTextBox" runat="server" Text='<%# Bind("password") %>' />
+                    <br />
+                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
+                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+                </EditItemTemplate>
+                <ItemTemplate>
+                    idMusico:
+                    <asp:Label ID="idMusicoLabel" runat="server" Text='<%# Eval("idMusico") %>' />
+                    <br />
+                    nombre:
+                    <asp:Label ID="nombreLabel" runat="server" Text='<%# Bind("nombre") %>' />
+                    <br />
+                    apellidos:
+                    <asp:Label ID="apellidosLabel" runat="server" Text='<%# Bind("apellidos") %>' />
+                    <br />
+                    direccion:
+                    <asp:Label ID="direccionLabel" runat="server" Text='<%# Bind("direccion") %>' />
+                    <br />
+                    ciudad:
+                    <asp:Label ID="ciudadLabel" runat="server" Text='<%# Bind("ciudad") %>' />
+                    <br />
+                    coche:
+                    <asp:CheckBox ID="cocheCheckBox" runat="server" Checked='<%# Bind("coche") %>' Enabled="false" />
+                    <br />
+                    disponibilidad:
+                    <asp:CheckBox ID="disponibilidadCheckBox" runat="server" Checked='<%# Bind("disponibilidad") %>' Enabled="false" />
+                    <br />
+                    categoriamusico:
+                    <asp:Label ID="categoriamusicoLabel" runat="server" Text='<%# Bind("categoriamusico") %>' />
+                    <br />
+                    usuario:
+                    <asp:Label ID="usuarioLabel" runat="server" Text='<%# Bind("usuario") %>' />
+                    <br />
+                    password:
+                    <asp:Label ID="passwordLabel" runat="server" Text='<%# Bind("password") %>' />
+                    <br />
+                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Modificar Datos" />
+                </ItemTemplate>
+            </asp:FormView>
+            <asp:SqlDataSource ID="sqlDSmusico" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" DeleteCommand="DELETE FROM [Musicos] WHERE [idMusico] = @idMusico" InsertCommand="INSERT INTO [Musicos] ([nombre], [apellidos], [direccion], [ciudad], [coche], [disponibilidad], [categoriamusico], [usuario], [password]) VALUES (@nombre, @apellidos, @direccion, @ciudad, @coche, @disponibilidad, @categoriamusico, @usuario, @password)" SelectCommand="SELECT * FROM [Musicos] WHERE ([idMusico] = @idMusico)" UpdateCommand="UPDATE [Musicos] SET [nombre] = @nombre, [apellidos] = @apellidos, [direccion] = @direccion, [ciudad] = @ciudad, [coche] = @coche, [disponibilidad] = @disponibilidad, [categoriamusico] = @categoriamusico, [usuario] = @usuario, [password] = @password WHERE [idMusico] = @idMusico">
+                <DeleteParameters>
+                    <asp:Parameter Name="idMusico" Type="Int32" />
+                </DeleteParameters>
+                <SelectParameters>
+                    <asp:Parameter Name="idMusico" Type="Int32" />
+                </SelectParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="nombre" Type="String" />
+                    <asp:Parameter Name="apellidos" Type="String" />
+                    <asp:Parameter Name="direccion" Type="String" />
+                    <asp:Parameter Name="ciudad" Type="String" />
+                    <asp:Parameter Name="coche" Type="Boolean" />
+                    <asp:Parameter Name="disponibilidad" Type="Boolean" />
+                    <asp:Parameter Name="categoriamusico" Type="Int32" />
+                    <asp:Parameter Name="usuario" Type="String" />
+                    <asp:Parameter Name="password" Type="String" />
+                    <asp:Parameter Name="idMusico" Type="Int32" />
+                </UpdateParameters>
+            </asp:SqlDataSource>
     <br />
-   <asp:Panel ID="pnDatos" runat="server">
-    <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
-    <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al músico" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
-    <br />
-    <asp:Label ID="lbApellidos" runat="server" Text="Apellidos: "></asp:Label>
-    <asp:TextBox ID="tbApellidos" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvApellidos" runat="server" ErrorMessage="Se requiere introducir los apellidos al músico" ControlToValidate="tbApellidos" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
-    <br />
-    <asp:Label ID="lbDireccion" runat="server" Text="Direccion: "></asp:Label>
-    <asp:TextBox ID="tbDireccion" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ErrorMessage="Se requiere introducir la dirección al músico" ControlToValidate="tbDireccion" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
-    <br />
-    <asp:Label ID="lbCiudad" runat="server" Text="Ciudad: "></asp:Label>
-    <asp:TextBox ID="tbCiudad" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvCiudad" runat="server" ErrorMessage="Se requiere introducir la ciudad al músico" ControlToValidate="tbCiudad" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
-    <br />
-    <asp:Label ID="lbCoche" runat="server" Text="Coche: "></asp:Label>
-    <asp:CheckBox ID="cbCoche" runat="server" />
-    <br />
-    <asp:Label ID="lbDisponibilidad" runat="server" Text="Disponibilidad: "></asp:Label>
-    <asp:CheckBox ID="cbDisponibilidad" runat="server" />
-    <br />
-    <asp:Label ID="lbCategoriaMusico" runat="server" Text="Categoria de Musico: "></asp:Label>
-    <asp:DropDownList ID="ddlCategoriaMusico" runat="server" DataSourceID="SqlDSCategoriaMusico" DataTextField="instrumento" DataValueField="id"></asp:DropDownList>
-    <asp:SqlDataSource ID="SqlDSCategoriaMusico" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="select CategoriaMusico.id, Instrumentos.instrumento from CategoriaMusico join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDSBandadeMusica" runat="server"></asp:SqlDataSource>
-    <br />
-       <asp:Label ID="lbUsuario" runat="server" Text="Usuario: "></asp:Label>
-    <asp:TextBox ID="tbUsuario" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Se requiere introducir Usuario" ControlToValidate="tbUsuario" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
-    <br />
-    <asp:Label ID="lbPass1" runat="server" Text="Contraseña: "></asp:Label>
-    <asp:TextBox ID="tbPass1" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Se requiere introducir la contraseña" ControlToValidate="tbPass1" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
-    <br />
-    <asp:Label ID="lbPass2" runat="server" Text="Repite Contraseña: "></asp:Label>
-    <asp:TextBox ID="tbPass2" runat="server"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Se requiere introducir la confirmación de la contraseña" ControlToValidate="tbPass2" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
-    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Las contraseñas no coinciden" ControlToCompare="tbPass1" ControlToValidate="tbPass2"></asp:CompareValidator>
-    <br />
-    <asp:Button ID="btGuardar" runat="server" Text="Guardar" ValidationGroup="DatosMusico"/>
-    <asp:Button ID="btCancelar" runat="server" Text="Cancelar" />
-   </asp:Panel>
+             
         </section>
     </div>
     </form>
