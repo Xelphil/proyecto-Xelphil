@@ -9,6 +9,7 @@ Partial Class contenidos_administrador_Trabajos
         pnDatos.Enabled = False
         listarMusicos()
         btCrear.Enabled = True
+        btModificar.Enabled = False
         btBorrar.Enabled = False
     End Sub
 

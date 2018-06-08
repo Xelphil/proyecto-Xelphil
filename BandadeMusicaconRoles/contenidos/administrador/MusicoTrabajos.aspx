@@ -48,8 +48,8 @@
             </asp:GridView>
         </asp:Panel>
          <asp:Button ID="btMusicoTrabajos" runat="server" Text="Volver a trabajos" />
-         <asp:Button ID="btCrear" runat="server" Text="Crear Músico" />
-        <asp:Button ID="btBorrar" runat="server" Text="Borrar Músico" />
+         <asp:Button ID="btCrear" runat="server" Text="Crear relación Músico/Trabajo" />
+        <asp:Button ID="btBorrar" runat="server" Text="Borrar relación Músico/Trabajo" />
     <br />
    <asp:Panel ID="pnDatos" runat="server">
 

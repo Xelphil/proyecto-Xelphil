@@ -53,7 +53,7 @@
         <asp:Button ID="btCrear" runat="server" Text="Crear Músico" />
         <asp:Button ID="btModificar" runat="server" Text="Modificar Músico" />
         <asp:Button ID="btBorrar" runat="server" Text="Borrar Músico" />
-            <asp:Button ID="btMusicoTrabajos" runat="server" Text="Buscar trabajos disponibles" />
+            <asp:Button ID="btMusicoTrabajos" runat="server" Text="Asignar trabajos disponibles a un músico" />
     <br />
    <asp:Panel ID="pnDatos" runat="server">
     <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>

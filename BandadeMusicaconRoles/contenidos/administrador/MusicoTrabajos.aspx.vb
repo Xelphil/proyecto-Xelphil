@@ -84,7 +84,7 @@ Partial Class contenidos_administrador_MusicoTrabajos
                 sentenciaBuscar = "select Trabajo.nombre,Trabajo.descripcion,Trabajo.fecha,MusicoTrabajos.idTrabajo,Musicos.nombre,Musicos.apellidos,MusicoTrabajos.idMusicos from Trabajo join MusicoTrabajos on Trabajo.id=MusicoTrabajos.idTrabajo join Musicos on MusicoTrabajos.idMusicos=Musicos.idMusico where Trabajo.nombre like '%" & tbBuscar.Text & "%'"
             End If
             If ddlBuscar.SelectedValue = 2 Then
-                sentenciaBuscar = "select Trabajo.nombre,Trabajo.descripcion,Trabajo.fecha,MusicoTrabajos.idTrabajo,Musicos.nombre,Musicos.apellidos,MusicoTrabajos.idMusicos from Trabajo join MusicoTrabajos on Trabajo.id=MusicoTrabajos.idTrabajo join Musicos on MusicoTrabajos.idMusicos=Musicos.idMusico where Musico.nombre like '%" & tbBuscar.Text & "%'"
+                sentenciaBuscar = "select Trabajo.nombre,Trabajo.descripcion,Trabajo.fecha,MusicoTrabajos.idTrabajo,Musicos.nombre,Musicos.apellidos,MusicoTrabajos.idMusicos from Trabajo join MusicoTrabajos on Trabajo.id=MusicoTrabajos.idTrabajo join Musicos on MusicoTrabajos.idMusicos=Musicos.idMusico where Musicos.nombre like '%" & tbBuscar.Text & "%'"
             End If
             Dim cnxBuscar As New SqlConnection(cadena)
             Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
@@ -100,21 +100,18 @@ Partial Class contenidos_administrador_MusicoTrabajos
 
     Protected Sub btBorrar_Click(sender As Object, e As EventArgs) Handles btBorrar.Click
         Dim cnxInsert As New SqlConnection(cadena)
-        Dim sentenciaInsert As String = "delete from MusicoTrabajos where idMusicos=@idMusicos and idTrabajo=@idTrabajo"
+        Dim sentenciaInsert As String = "delete MusicoTrabajos where idMusicos=@idMusicos and idTrabajo=@idTrabajo"
         Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
         MsgBox("Musico:" & gvMusicos.SelectedRow.Cells(7).Text.ToString)
         cmdInsert.Parameters.AddWithValue("@idMusicos", gvMusicos.SelectedRow.Cells(7).Text.ToString)
         MsgBox("Trabajo:" & gvMusicos.SelectedDataKey.Value)
-        cmdInsert.Parameters.AddWithValue("@idTrabajos", gvMusicos.SelectedDataKey.Value)
+        cmdInsert.Parameters.AddWithValue("@idTrabajo", gvMusicos.SelectedDataKey.Value)
+
         Try
             cnxInsert.Open()
-            If cnxInsert.State = Data.ConnectionState.Open Then
-                cmdInsert.ExecuteNonQuery()
-                cmdInsert.Parameters.Clear()
-
-            End If
+            cmdInsert.ExecuteNonQuery()
         Catch ex As Exception
-            Throw New Exception(ex.Message)
+            MsgBox(ex.Message)
         Finally
             cnxInsert.Close()
             cnxInsert.Dispose()
