@@ -19,6 +19,7 @@
            <asp:Button ID="btGastos" runat="server" Text="Gastos" />
        </nav>
         <section>
+            <h1>Músicos</h1>
             <br />
             <asp:FormView ID="fvMusico" runat="server" DataKeyNames="idMusico" DataSourceID="sqlDSmusico">
                 <EditItemTemplate>
