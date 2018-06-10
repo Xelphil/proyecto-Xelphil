@@ -44,7 +44,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <div>
+    <div id="cab">
             <asp:Image ID="imgLogo" runat="server" ImageUrl="~/imagenes/emblemmatic-bandademusica-logo-10.png"/>
             <asp:Button ID="btCerrarSesion" runat="server" Text="Cerrar Sesion" />
         </div> 
