@@ -90,7 +90,7 @@ Partial Class contenidos_musico_Gastos
                 sentenciaBuscar = "select * from Gastos where NombredelGasto like '%" & tbBuscar.Text & "%' and musicocongasto=@musicocongasto"
             End If
             If ddlBuscar.SelectedValue = 2 Then
-                sentenciaBuscar = "select * from Gastos where Fecha = " & tbBuscar.Text & " and musicocongasto=@musicocongasto"
+                sentenciaBuscar = "select * from Gastos where trabajo = " & tbBuscar.Text & " and musicocongasto=@musicocongasto"
             End If
             If ddlBuscar.SelectedValue = 3 Then
                 sentenciaBuscar = "select * from Gastos where pagado = " & tbBuscar.Text & " and musicocongasto=@musicocongasto"

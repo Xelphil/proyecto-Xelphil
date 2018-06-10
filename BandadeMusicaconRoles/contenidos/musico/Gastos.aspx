@@ -23,7 +23,25 @@
             padding: 0.2em;
             justify-content:space-around;
             background-color:#e8e8e8;
+            align-items:center;
+            align-content:center;
         }
+
+        #gvMusicos tbody{
+            font-size: 0.9em;
+            text-align: center;
+        }
+        #gvMusicos tbody th{
+            padding: 0.2em;
+            background-color: #909090;
+            color: white;
+        }
+
+        #gvMusicos tbody td{
+            padding: 0.25em;
+            background-color:#e8e8e8;
+        }
+
 
         input[type=submit]{
             padding: 0.5em;
@@ -37,7 +55,24 @@
             color:white;
         }
         section{
-            text-align:center
+            text-align:center;
+        }
+        #pnDatos{
+            text-align:left;
+        }
+        #btCrear,#btGuardar{
+            background-color: #009688;
+        }
+        #btCrear:hover,#btGuardar:hover{
+            background-color:#005996;
+            color: white;
+        }
+        #btCancelar{
+            background-color: #f44336;
+        }
+        #btCancelar:hover{
+            background-color:#d2190b;
+            color: white;
         }
     </style>
 </head>
@@ -54,14 +89,14 @@
            <asp:Button ID="btGastos" runat="server" Text="Gastos" />
        </nav>
         <section>
-            <h1>Músicos</h1>
+            <h1> Gastos Músicos</h1>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
      <asp:Panel ID="pnBuscador" runat="server">
             <asp:Panel ID="pnBuscar" runat="server">
                 <asp:Label ID="lbBuscar" runat="server" Text="Buscar por: "></asp:Label>
                 <asp:DropDownList ID="ddlBuscar" runat="server">
                     <asp:ListItem Text="Nombre" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Fecha" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Trabajo" Value="2"></asp:ListItem>
                     <asp:ListItem Text="Pagado" Value="3"></asp:ListItem>
                 </asp:DropDownList>
                 <asp:TextBox ID="tbBuscar" runat="server"></asp:TextBox>
@@ -69,7 +104,6 @@
             </asp:Panel>
             <asp:GridView ID="gvMusicos" runat="server" AutoGenerateColumns="False" DataKeyNames="id">
                 <Columns>
-                    <asp:CommandField ShowSelectButton="True" ButtonType="Button" />
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" InsertVisible="False" SortExpression="id" Visible="false"/>
                     <asp:BoundField DataField="NombredelGasto" HeaderText="Nombre del Gasto" SortExpression="NombredelGasto" />
                     <asp:BoundField DataField="descripcion" HeaderText="Descripcion del Gasto" SortExpression="descripcion" />
