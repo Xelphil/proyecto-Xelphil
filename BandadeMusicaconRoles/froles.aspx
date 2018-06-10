@@ -8,9 +8,10 @@
     <title></title>
 
 <style type ="text/css">
+
 html, body 
 {
-    font-family: Arial, sans-serif;
+    font-family: Calibri;
     font-size: 13px;
     color: #404040;
     direction: ltr;
@@ -21,7 +22,6 @@ html, body
 {
     margin-top:20px; 
     text-align: center;
-    font-family: 'Open Sans', arial;
     color: #555;
     font-size: 18px;
     font-weight: 400;
