@@ -5,11 +5,87 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style>
+        *{
+            font-family: Calibri;
+        }
+        #cab{
+            border: 2px solid #007ba7;
+            border-top-left-radius: 0.5em;
+            border-top-right-radius: 0.5em;
+            padding: 1em;
+            display:flex;
+            justify-content:space-between;
+        }
+
+        nav{
+            display:flex;
+            padding: 0.2em;
+            justify-content:space-around;
+            background-color:#e8e8e8;
+            align-items:center;
+            align-content:center;
+        }
+
+        #gvMusicos tbody{
+            font-size: 0.9em;
+            text-align: center;
+        }
+        #gvMusicos tbody th{
+            padding: 0.2em;
+            background-color: #909090;
+            color: white;
+        }
+
+        #gvMusicos tbody td{
+            padding: 0.25em;
+            background-color:#e8e8e8;
+        }
+
+
+        input[type=submit]{
+            padding: 0.5em;
+            border-radius: 0.5em;
+            transition: background-color 1s,color 1s ease-out;
+            font-weight: bold;
+            margin-right: 0.25em;
+        }
+        input[type=submit]:hover{
+            background-color:#333333;
+            color:white;
+        }
+        section{
+            text-align:center;
+        }
+        #pnDatos{
+            text-align:left;
+        }
+        #btCrear,#btGuardar{
+            background-color: #009688;
+        }
+        #btCrear:hover,#btGuardar:hover{
+            background-color:#005996;
+            color: white;
+        }
+        #btCancelar{
+            background-color: #f44336;
+        }
+        #btCancelar:hover{
+            background-color:#d2190b;
+            color: white;
+        }
+        #Button1{
+            margin-top: 10px;
+        }
+        #pnBuscar{
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    <div>
+    <div id="cab">
             <asp:Image ID="imgLogo" runat="server" ImageUrl="~/imagenes/emblemmatic-bandademusica-logo-10.png"/>
             <asp:Button ID="btCerrarSesion" runat="server" Text="Cerrar Sesion" />
         </div> 
