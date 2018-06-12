@@ -8,6 +8,7 @@
     <style>
         *{
             font-family: Calibri;
+            margin: 5px;
         }
         #cab{
             border: 2px solid #007ba7;

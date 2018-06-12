@@ -8,6 +8,7 @@
     <style>
         *{
             font-family: Calibri;
+            margin: 5px;
         }
         #cab{
             border: 2px solid #007ba7;
@@ -58,7 +59,7 @@
             text-align:center;
         }
         #pnDatos{
-            text-align:left;
+            /*text-align:left;*/
         }
         #btCrear,#btGuardar{
             background-color: #009688;
@@ -76,6 +77,9 @@
         }
         #pnBuscar{
             margin-bottom: 10px;
+        }
+        #clFecha{
+            margin:auto;
         }
     </style>
 </head>
@@ -122,6 +126,7 @@
    <asp:Panel ID="pnDatos" runat="server">
     <asp:Label ID="lbNombre" runat="server" Text="Nombre del Gasto: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
+       <br />
     <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbdescripcion" runat="server" Text="Descripcion: "></asp:Label>
@@ -144,6 +149,7 @@
                 <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="Se requiere introducir una fecha del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
             </ContentTemplate>
         </asp:UpdatePanel>
+       <br />
     <asp:Label ID="lbpagado" runat="server" Text="¿Pagado?: "></asp:Label>
     <asp:CheckBox ID="cbpagado" runat="server" />
     <br />
