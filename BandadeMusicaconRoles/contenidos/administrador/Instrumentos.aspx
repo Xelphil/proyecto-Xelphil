@@ -5,11 +5,111 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style>
+        *{
+            font-family: Calibri;
+            margin: 5px;
+        }
+        #cab{
+            border: 2px solid #007ba7;
+            border-top-left-radius: 0.5em;
+            border-top-right-radius: 0.5em;
+            padding: 1em;
+            display:flex;
+            justify-content:space-between;
+        }
+
+        nav{
+            display:flex;
+            padding: 0.2em;
+            justify-content:space-around;
+            background-color:#e8e8e8;
+            align-items:center;
+            align-content:center;
+        }
+        #gvInstrumentos {
+            margin:auto;
+        }
+
+        #gvInstrumentos tbody{
+            font-size: 0.9em;
+            text-align: center;
+            margin:auto;
+        }
+        #gvInstrumentos tbody th{
+            padding: 0.2em;
+            background-color: #909090;
+            color: white;
+        }
+
+        #gvInstrumentos tbody td{
+            padding: 0.25em;
+            background-color:#e8e8e8;
+        }
+
+        #gvInstrumentos input{
+            padding: 0.5em;
+            border-radius: 0.5em;
+            transition: background-color 1s,color 1s ease-out;
+            font-weight: bold;
+            margin-right: 0.25em;
+        }
+
+        #gvInstrumentos input:hover{
+            background-color:#595959;
+            color:white;
+        }
+
+        input[type=submit]{
+            padding: 0.5em;
+            border-radius: 0.5em;
+            transition: background-color 1s,color 1s ease-out;
+            font-weight: bold;
+            margin-right: 0.25em;
+        }
+        input[type=submit]:hover{
+            background-color:#333333;
+            color:white;
+        }
+        section{
+            text-align:center;
+        }
+        #btCrear,#btGuardar{
+            background-color: #009688;
+        }
+        #btCrear:hover,#btGuardar:hover{
+            background-color:#005996;
+            color: white;
+        }
+        #btModificar{
+            background-color: #03a9f4;
+        }
+        #btModificar:hover{
+            background-color:#0227c2;
+            color: white;
+        }
+        #btCancelar,#btBorrar{
+            background-color: #f44336;
+        }
+        #btCancelar:hover,#btBorrar:hover{
+            background-color:#d2190b;
+            color: white;
+        }
+        #pnBuscar{
+            margin-bottom: 10px;
+        }
+        #pnDatos{
+            align-items:center;
+        }
+        #clFecha{
+            margin:auto;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    <div>
+    <div id="cab">
             <asp:Image ID="imgLogo" runat="server" ImageUrl="~/imagenes/emblemmatic-bandademusica-logo-10.png"/>
             <asp:Button ID="btCerrarSesion" runat="server" Text="Cerrar Sesion" />
         </div> 
@@ -48,6 +148,7 @@
    <asp:Panel ID="pnDatos" runat="server">
     <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
+       <br />
     <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al instrumento" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Button ID="btGuardar" runat="server" Text="Guardar" ValidationGroup="DatosMusico"/>

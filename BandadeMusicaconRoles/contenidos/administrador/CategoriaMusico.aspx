@@ -47,6 +47,18 @@
             background-color:#e8e8e8;
         }
 
+        #gvMusicos input{
+            padding: 0.5em;
+            border-radius: 0.5em;
+            transition: background-color 1s,color 1s ease-out;
+            font-weight: bold;
+            margin-right: 0.25em;
+        }
+
+        #gvMusicos input:hover{
+            background-color:#595959;
+            color:white;
+        }
 
         input[type=submit]{
             padding: 0.5em;

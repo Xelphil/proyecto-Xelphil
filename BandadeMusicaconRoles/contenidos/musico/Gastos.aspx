@@ -58,9 +58,6 @@
         section{
             text-align:center;
         }
-        #pnDatos{
-            /*text-align:left;*/
-        }
         #btCrear,#btGuardar{
             background-color: #009688;
         }

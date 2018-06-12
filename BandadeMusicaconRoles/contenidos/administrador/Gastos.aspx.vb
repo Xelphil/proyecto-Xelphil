@@ -13,7 +13,7 @@ Partial Class contenidos_administrador_Gastos
     End Sub
 
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
-        MsgBox(Session("modifica").ToString)
+        'MsgBox(Session("modifica").ToString)
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "insert into Gastos(NombredelGasto,descripcion,Fecha,pagado,trabajo,musicocongasto) values(@NombredelGasto,@descripcion,@Fecha,@pagado,@trabajo,@musicocongasto)"
@@ -40,11 +40,11 @@ Partial Class contenidos_administrador_Gastos
                 Response.Redirect("~/Contenidos/administrador/Gastos.aspx")
             End Try
         Else
-            MsgBox("admin")
-                MsgBox(Session("DatosUsuario"))
-                MsgBox(Session("modifica").ToString)
-                MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
-                Dim cnxInsert As New SqlConnection(cadena)
+            'MsgBox("admin")
+            'MsgBox(Session("DatosUsuario"))
+            'MsgBox(Session("modifica").ToString)
+            'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+            Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update Gastos set NombredelGasto=@NombredelGasto,descripcion=@descripcion,Fecha=@Fecha,pagado=@pagado,trabajo=@trabajo,musicocongasto=@musicocongasto where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
                 cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
@@ -172,7 +172,7 @@ Partial Class contenidos_administrador_Gastos
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
         Session("modifica") = True
         pnDatos.Enabled = True
-        MsgBox(Session("modifica").ToString)
+        'MsgBox(Session("modifica").ToString)
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click

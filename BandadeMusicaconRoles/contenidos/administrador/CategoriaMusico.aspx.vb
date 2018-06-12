@@ -37,8 +37,8 @@ Partial Class contenidos_administrador_CategoriaMusico
             End Try
         Else
             'update
-            MsgBox(Session("modifica").ToString)
-            MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+            ' MsgBox(Session("modifica").ToString)
+            ' MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update CategoriaMusico set sueldo=@sueldo,instrumento=@instrumento where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -152,7 +152,7 @@ Partial Class contenidos_administrador_CategoriaMusico
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
         Session("modifica") = True
         pnDatos.Enabled = True
-        MsgBox(Session("modifica").ToString)
+        'MsgBox(Session("modifica").ToString)
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click

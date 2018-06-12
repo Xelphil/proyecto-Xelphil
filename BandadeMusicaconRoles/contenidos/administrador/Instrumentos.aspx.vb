@@ -14,7 +14,7 @@ Partial Class contenidos_administrador_Instrumentos
     End Sub
 
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
-        MsgBox(Session("modifica").ToString)
+        'MsgBox(Session("modifica").ToString)
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "insert into Instrumentos(instrumento) values(@instrumento)"
@@ -37,8 +37,8 @@ Partial Class contenidos_administrador_Instrumentos
             End Try
         Else
             'update
-            MsgBox(Session("modifica").ToString)
-            MsgBox(gvInstrumentos.SelectedDataKey.Value.ToString)
+            'MsgBox(Session("modifica").ToString)
+            'MsgBox(gvInstrumentos.SelectedDataKey.Value.ToString)
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update Instrumentos set instrumento=@instrumento where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -56,7 +56,7 @@ Partial Class contenidos_administrador_Instrumentos
             Finally
                 cnxInsert.Close()
                 cnxInsert.Dispose()
-                Response.Redirect("~/Contenidos/administrador/Instruemntos.aspx")
+                Response.Redirect("~/Contenidos/administrador/Instrumentos.aspx")
             End Try
         End If
     End Sub
@@ -143,7 +143,7 @@ Partial Class contenidos_administrador_Instrumentos
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
         Session("modifica") = True
         pnDatos.Enabled = True
-        MsgBox(Session("modifica").ToString)
+        ' MsgBox(Session("modifica").ToString)
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click

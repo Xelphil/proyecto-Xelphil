@@ -37,8 +37,8 @@ Partial Class contenidos_administrador_CategoriaTrabajo
             End Try
         Else
             'update
-            MsgBox(Session("modifica").ToString)
-            MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+            'MsgBox(Session("modifica").ToString)
+            'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update CategoriaTrabajo set precio=@precio,nombre=@nombre where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -139,6 +139,7 @@ Partial Class contenidos_administrador_CategoriaTrabajo
 
             End If
         Catch ex As Exception
+            MsgBox(ex.Message)
             Throw New Exception(ex.Message)
         Finally
             cnxInsert.Close()
