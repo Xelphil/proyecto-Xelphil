@@ -102,16 +102,16 @@ Partial Class contenidos_administrador_MusicoTrabajos
         Dim cnxInsert As New SqlConnection(cadena)
         Dim sentenciaInsert As String = "delete MusicoTrabajos where idMusicos=@idMusicos and idTrabajo=@idTrabajo"
         Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
-        MsgBox("Musico:" & gvMusicos.SelectedRow.Cells(7).Text.ToString)
+        ' MsgBox("Musico:" & gvMusicos.SelectedRow.Cells(7).Text.ToString)
         cmdInsert.Parameters.AddWithValue("@idMusicos", gvMusicos.SelectedRow.Cells(7).Text.ToString)
-        MsgBox("Trabajo:" & gvMusicos.SelectedDataKey.Value)
+        'MsgBox("Trabajo:" & gvMusicos.SelectedDataKey.Value)
         cmdInsert.Parameters.AddWithValue("@idTrabajo", gvMusicos.SelectedDataKey.Value)
 
         Try
             cnxInsert.Open()
             cmdInsert.ExecuteNonQuery()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            'MsgBox(ex.Message)
         Finally
             cnxInsert.Close()
             cnxInsert.Dispose()

@@ -13,7 +13,7 @@ Partial Class contenidos_administrador_Musicos
     End Sub
 
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
-        MsgBox(Session("modifica").ToString)
+        'MsgBox(Session("modifica").ToString)
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "insert into Musicos(nombre,apellidos,direccion,ciudad,coche,disponibilidad,categoriamusico,usuario,password) values(@nombre,@apellidos,@direccion,@ciudad,@coche,@disponibilidad,@categoriamusico,@usuario,@contraseña)"
@@ -43,8 +43,8 @@ Partial Class contenidos_administrador_Musicos
                 Response.Redirect("~/contenidos/administrador/Musicos.aspx")
             End Try
         Else
-            MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
-                Dim cnxInsert As New SqlConnection(cadena)
+            ' MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
+            Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update Musicos set nombre=@nombre,apellidos=@apellidos,direccion=@direccion,ciudad=@ciudad,coche=@coche,disponibilidad=@disponibilidad,categoriamusico=@categoriamusico,usuario=@usuario,password=@contraseña where idMusico=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
                 cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
@@ -187,7 +187,7 @@ Partial Class contenidos_administrador_Musicos
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
         Session("modifica") = True
         pnDatos.Enabled = True
-        MsgBox(Session("modifica").ToString)
+        'MsgBox(Session("modifica").ToString)
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click

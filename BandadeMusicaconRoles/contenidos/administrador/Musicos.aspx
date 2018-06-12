@@ -5,11 +5,108 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style>
+        *{
+            font-family: Calibri;
+            margin: 5px;
+        }
+        #cab{
+            border: 2px solid #007ba7;
+            border-top-left-radius: 0.5em;
+            border-top-right-radius: 0.5em;
+            padding: 1em;
+            display:flex;
+            justify-content:space-between;
+        }
+
+        nav{
+            display:flex;
+            padding: 0.2em;
+            justify-content:space-around;
+            background-color:#e8e8e8;
+            align-items:center;
+            align-content:center;
+        }
+        #gvMusicos {
+            margin:auto;
+        }
+
+        #gvMusicos tbody{
+            font-size: 0.9em;
+            text-align: center;
+            margin:auto;
+        }
+        #gvMusicos tbody th{
+            padding: 0.2em;
+            background-color: #909090;
+            color: white;
+        }
+
+        #gvMusicos tbody td{
+            padding: 0.25em;
+            background-color:#e8e8e8;
+        }
+
+        #gvMusicos input{
+            padding: 0.5em;
+            border-radius: 0.5em;
+            transition: background-color 1s,color 1s ease-out;
+            font-weight: bold;
+            margin-right: 0.25em;
+        }
+
+        #gvMusicos input:hover{
+            background-color:#595959;
+            color:white;
+        }
+
+        input[type=submit]{
+            padding: 0.5em;
+            border-radius: 0.5em;
+            transition: background-color 1s,color 1s ease-out;
+            font-weight: bold;
+            margin-right: 0.25em;
+        }
+        input[type=submit]:hover{
+            background-color:#333333;
+            color:white;
+        }
+        section{
+            text-align:center;
+        }
+        #btCrear,#btGuardar{
+            background-color: #009688;
+        }
+        #btCrear:hover,#btGuardar:hover{
+            background-color:#005996;
+            color: white;
+        }
+        #btModificar{
+            background-color: #03a9f4;
+        }
+        #btModificar:hover{
+            background-color:#0227c2;
+            color: white;
+        }
+        #btCancelar,#btBorrar{
+            background-color: #f44336;
+        }
+        #btCancelar:hover,#btBorrar:hover{
+            background-color:#d2190b;
+            color: white;
+        }
+        #pnBuscar{
+            margin-bottom: 10px;
+        }
+        #pnDatos{
+            align-items:center;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <div>
+        <div id="cab">
             <asp:Image ID="imgLogo" runat="server" ImageUrl="~/imagenes/emblemmatic-bandademusica-logo-10.png"/>
             <asp:Button ID="btCerrarSesion" runat="server" Text="Cerrar Sesion" />
         </div> 
@@ -58,18 +155,22 @@
    <asp:Panel ID="pnDatos" runat="server">
     <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
+       <br />
     <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al músico" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbApellidos" runat="server" Text="Apellidos: "></asp:Label>
     <asp:TextBox ID="tbApellidos" runat="server"></asp:TextBox>
+       <br />
     <asp:RequiredFieldValidator ID="rfvApellidos" runat="server" ErrorMessage="Se requiere introducir los apellidos al músico" ControlToValidate="tbApellidos" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbDireccion" runat="server" Text="Direccion: "></asp:Label>
     <asp:TextBox ID="tbDireccion" runat="server"></asp:TextBox>
+       <br />
     <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ErrorMessage="Se requiere introducir la dirección al músico" ControlToValidate="tbDireccion" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbCiudad" runat="server" Text="Ciudad: "></asp:Label>
     <asp:TextBox ID="tbCiudad" runat="server"></asp:TextBox>
+       <br />
     <asp:RequiredFieldValidator ID="rfvCiudad" runat="server" ErrorMessage="Se requiere introducir la ciudad al músico" ControlToValidate="tbCiudad" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbCoche" runat="server" Text="Coche: "></asp:Label>
@@ -80,19 +181,22 @@
     <br />
     <asp:Label ID="lbCategoriaMusico" runat="server" Text="Categoria de Musico: "></asp:Label>
     <asp:DropDownList ID="ddlCategoriaMusico" runat="server" DataSourceID="SqlDSCategoriaMusico" DataTextField="instrumento" DataValueField="id"></asp:DropDownList>
-    <asp:SqlDataSource ID="SqlDSCategoriaMusico" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="select CategoriaMusico.id, Instrumentos.instrumento from CategoriaMusico join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDSCategoriaMusico" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="SELECT [id], [instrumento] FROM [Instrumentos]"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDSBandadeMusica" runat="server"></asp:SqlDataSource>
     <br />
     <asp:Label ID="lbUsuario" runat="server" Text="Usuario: "></asp:Label>
     <asp:TextBox ID="tbUsuario" runat="server"></asp:TextBox>
+       <br />
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Se requiere introducir Usuario" ControlToValidate="tbUsuario" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbPass1" runat="server" Text="Contraseña: "></asp:Label>
     <asp:TextBox ID="tbPass1" runat="server"></asp:TextBox>
+       <br />
     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Se requiere introducir la contraseña" ControlToValidate="tbPass1" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbPass2" runat="server" Text="Repite Contraseña: "></asp:Label>
     <asp:TextBox ID="tbPass2" runat="server"></asp:TextBox>
+       <br />
     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Se requiere introducir la confirmación de la contraseña" ControlToValidate="tbPass2" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
     <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Las contraseñas no coinciden" ControlToCompare="tbPass1" ControlToValidate="tbPass2"></asp:CompareValidator>
     <br />

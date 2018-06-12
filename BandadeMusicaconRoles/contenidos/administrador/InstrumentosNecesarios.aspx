@@ -138,11 +138,11 @@
                 <Columns>
                     <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                     <asp:BoundField DataField="id" HeaderText="Cod. Instru. Nec." ReadOnly="True" InsertVisible="False" SortExpression="id"/>
-                    <asp:BoundField DataField="idcategoriatrabajo" HeaderText="Cod. Categoría" ReadOnly="True" InsertVisible="False" SortExpression="idcategoriatrabajo"/>
-                    <asp:BoundField DataField="nombre" HeaderText="nombre" SortExpression="nombre"/>
-                    <asp:BoundField DataField="precio" HeaderText="precio" SortExpression="precio" />
-                    <asp:BoundField DataField="cantidad" HeaderText="cantidad" SortExpression="cantidad" />
-                    <asp:BoundField DataField="instrumento" HeaderText="instrumento" SortExpression="instrumento" />
+                    <asp:BoundField DataField="idcategoriatrabajo" HeaderText="idcategoriatrabajo" SortExpression="idcategoriatrabajo" Visible="false"/>
+                    <asp:BoundField DataField="nombre" HeaderText="Nombre" SortExpression="nombre"/>
+                    <asp:BoundField DataField="precio" HeaderText="Precio" SortExpression="precio" />
+                    <asp:BoundField DataField="cantidad" HeaderText="Cantidad" SortExpression="cantidad" />
+                    <asp:BoundField DataField="instrumento" HeaderText="Instrumento" SortExpression="instrumento" />
                 </Columns>
             </asp:GridView>
     <asp:Button ID="btCrear" runat="server" Text="Añadir cantidad de instrumentos a Categoría" />
