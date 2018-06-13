@@ -214,4 +214,5 @@ Partial Class contenidos_administrador_Gastos
     Protected Sub btUsuarios_Click(sender As Object, e As EventArgs) Handles btUsuarios.Click
         Response.Redirect("~/Contenidos/administrador/Usuarios.aspx")
     End Sub
+
 End Class
