@@ -27,6 +27,9 @@
             align-items:center;
             align-content:center;
         }
+        #gvMusicos {
+            margin:auto;
+        }
 
         #gvMusicos tbody{
             font-size: 0.9em;

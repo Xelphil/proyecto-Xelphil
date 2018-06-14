@@ -32,6 +32,11 @@
             font-size: 0.9em;
             text-align: center;
         }
+
+        #gvMusicos {
+            margin:auto;
+        }
+
         #gvMusicos tbody th{
             padding: 0.2em;
             background-color: #909090;
