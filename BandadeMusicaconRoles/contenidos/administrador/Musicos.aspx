@@ -181,7 +181,7 @@
     <br />
     <asp:Label ID="lbCategoriaMusico" runat="server" Text="Categoria de Musico: "></asp:Label>
     <asp:DropDownList ID="ddlCategoriaMusico" runat="server" DataSourceID="SqlDSCategoriaMusico" DataTextField="instrumento" DataValueField="id"></asp:DropDownList>
-    <asp:SqlDataSource ID="SqlDSCategoriaMusico" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="SELECT [id], [instrumento] FROM [Instrumentos]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDSCategoriaMusico" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="SELECT CategoriaMusico.id, Instrumentos.instrumento FROM Instrumentos INNER JOIN CategoriaMusico ON Instrumentos.id = CategoriaMusico.instrumento"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDSBandadeMusica" runat="server"></asp:SqlDataSource>
     <br />
     <asp:Label ID="lbUsuario" runat="server" Text="Usuario: "></asp:Label>

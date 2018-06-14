@@ -9,6 +9,7 @@ Partial Class contenidos_administrador_Gastos
         pnDatos.Enabled = False
         listarMusicos()
         btCrear.Enabled = True
+        btModificar.Enabled = False
         btBorrar.Enabled = False
     End Sub
 

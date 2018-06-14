@@ -9,6 +9,7 @@ Partial Class contenidos_administrador_Musicos
         pnDatos.Enabled = False
         listarMusicos()
         btCrear.Enabled = True
+        btModificar.Enabled = False
         btBorrar.Enabled = False
     End Sub
 
@@ -36,6 +37,7 @@ Partial Class contenidos_administrador_Musicos
                 End If
             Catch ex As Exception
                 Throw New Exception(ex.Message)
+                MsgBox(ex.Message)
             Finally
                 cnxInsert.Close()
                 cnxInsert.Dispose()
