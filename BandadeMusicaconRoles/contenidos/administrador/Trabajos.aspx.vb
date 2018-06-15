@@ -14,7 +14,6 @@ Partial Class contenidos_administrador_Trabajos
     End Sub
 
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
-        MsgBox(Session("modifica").ToString)
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "insert into Trabajo(nombre,fecha,lugar,ciudad,direccion,descripcion,categoriatrabajo,completo) values(@nombre,@fecha,@lugar,@ciudad,@direccion,@descripcion,@categoriatrabajo,@completo)"
@@ -43,8 +42,7 @@ Partial Class contenidos_administrador_Trabajos
                 Response.Redirect("~/Contenidos/administrador/Trabajos.aspx")
             End Try
         Else
-            MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
-                Dim cnxInsert As New SqlConnection(cadena)
+            Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update Trabajo set nombre=@nombre,fecha=@fecha,lugar=@lugar,ciudad=@ciudad,direccion=@direccion,descripcion=@descripcion,categoriatrabajo=@categoriatrabajo,completo=@completo where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
                 cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
@@ -89,7 +87,6 @@ Partial Class contenidos_administrador_Trabajos
         Dim sentenciaBuscar As String = "select * from Trabajo"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
-        'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
         Dim adaptadorBuscar As New SqlDataAdapter(cmdBuscar)
         Dim dt As New DataTable
         adaptadorBuscar.Fill(dt)
@@ -104,7 +101,6 @@ Partial Class contenidos_administrador_Trabajos
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
         btModificar.Enabled = True
         btBorrar.Enabled = True
         btCrear.Enabled = False
@@ -180,7 +176,6 @@ Partial Class contenidos_administrador_Trabajos
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
         Session("modifica") = True
         pnDatos.Enabled = True
-        MsgBox(Session("modifica").ToString)
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click

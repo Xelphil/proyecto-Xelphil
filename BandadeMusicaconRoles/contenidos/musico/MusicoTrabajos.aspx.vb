@@ -23,8 +23,6 @@ Partial Class contenidos_musico_MusicoTrabajos
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
-
         Dim cnxInsert As New SqlConnection(cadena)
         Dim sentenciaInsert As String = "insert into MusicoTrabajos(idMusicos,idTrabajo) values(@idMusicos,@idTrabajo)"
         Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)

@@ -36,9 +36,6 @@ Partial Class contenidos_administrador_CategoriaMusico
                 Response.Redirect("~/Contenidos/administrador/CategoriaMusico.aspx")
             End Try
         Else
-            'update
-            ' MsgBox(Session("modifica").ToString)
-            ' MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update CategoriaMusico set sueldo=@sueldo,instrumento=@instrumento where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -70,7 +67,6 @@ Partial Class contenidos_administrador_CategoriaMusico
         Dim sentenciaBuscar As String = "SELECT CategoriaMusico.id, CategoriaMusico.sueldo, CategoriaMusico.instrumento, Instrumentos.instrumento AS Expr1 FROM CategoriaMusico INNER JOIN Instrumentos ON CategoriaMusico.instrumento = Instrumentos.id"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
-        'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
         Dim adaptadorBuscar As New SqlDataAdapter(cmdBuscar)
         Dim dt As New DataTable
         adaptadorBuscar.Fill(dt)
@@ -85,7 +81,6 @@ Partial Class contenidos_administrador_CategoriaMusico
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
         btModificar.Enabled = True
         btBorrar.Enabled = True
         btCrear.Enabled = False
@@ -152,7 +147,6 @@ Partial Class contenidos_administrador_CategoriaMusico
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
         Session("modifica") = True
         pnDatos.Enabled = True
-        'MsgBox(Session("modifica").ToString)
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click

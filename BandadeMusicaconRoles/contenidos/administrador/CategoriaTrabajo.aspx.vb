@@ -36,9 +36,6 @@ Partial Class contenidos_administrador_CategoriaTrabajo
                 Response.Redirect("~/Contenidos/administrador/CategoriaTrabajo.aspx")
             End Try
         Else
-            'update
-            'MsgBox(Session("modifica").ToString)
-            'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update CategoriaTrabajo set precio=@precio,nombre=@nombre where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -69,7 +66,6 @@ Partial Class contenidos_administrador_CategoriaTrabajo
         Dim sentenciaBuscar As String = "select * from CategoriaTrabajo"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
-        'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
         Dim adaptadorBuscar As New SqlDataAdapter(cmdBuscar)
         Dim dt As New DataTable
         adaptadorBuscar.Fill(dt)
@@ -84,7 +80,6 @@ Partial Class contenidos_administrador_CategoriaTrabajo
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
         btModificar.Enabled = True
         btBorrar.Enabled = True
         btCrear.Enabled = False
@@ -139,7 +134,6 @@ Partial Class contenidos_administrador_CategoriaTrabajo
 
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
             Throw New Exception(ex.Message)
         Finally
             cnxInsert.Close()

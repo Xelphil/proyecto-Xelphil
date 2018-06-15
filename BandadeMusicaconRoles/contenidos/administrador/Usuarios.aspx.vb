@@ -70,7 +70,6 @@ Partial Class contenidos_administrador_Usuarios
         Dim sentenciaBuscar As String = "SELECT Roles.Rol, Asignacion.idRol, Musicos.usuario, Asignacion.idMusico FROM Asignacion INNER JOIN Musicos ON Asignacion.idMusico = Musicos.idMusico INNER JOIN Roles ON Asignacion.idRol = Roles.idRol"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
-        'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
         Dim adaptadorBuscar As New SqlDataAdapter(cmdBuscar)
         Dim dt As New DataTable
         adaptadorBuscar.Fill(dt)
@@ -85,7 +84,6 @@ Partial Class contenidos_administrador_Usuarios
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
         btModificar.Enabled = True
         btBorrar.Enabled = True
         btCrear.Enabled = False

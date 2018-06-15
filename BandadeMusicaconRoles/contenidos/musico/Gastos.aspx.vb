@@ -62,7 +62,6 @@ Partial Class contenidos_musico_Gastos
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
         btCrear.Enabled = False
 
         Dim idCliente = gvMusicos.SelectedDataKey.Value

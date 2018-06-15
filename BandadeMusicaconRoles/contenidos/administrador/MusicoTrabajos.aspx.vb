@@ -43,7 +43,6 @@ Partial Class contenidos_administrador_MusicoTrabajos
         Dim sentenciaBuscar As String = "select Trabajo.nombre,Trabajo.descripcion,Trabajo.fecha,MusicoTrabajos.idTrabajo,Musicos.nombre,Musicos.apellidos,MusicoTrabajos.idMusicos from Trabajo join MusicoTrabajos on Trabajo.id=MusicoTrabajos.idTrabajo join Musicos on MusicoTrabajos.idMusicos=Musicos.idMusico"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
-        'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
         Dim adaptadorBuscar As New SqlDataAdapter(cmdBuscar)
         Dim dt As New DataTable
         adaptadorBuscar.Fill(dt)
@@ -56,7 +55,6 @@ Partial Class contenidos_administrador_MusicoTrabajos
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
         btBorrar.Enabled = True
 
         Dim idCliente = gvMusicos.SelectedDataKey.Value
@@ -102,16 +100,13 @@ Partial Class contenidos_administrador_MusicoTrabajos
         Dim cnxInsert As New SqlConnection(cadena)
         Dim sentenciaInsert As String = "delete MusicoTrabajos where idMusicos=@idMusicos and idTrabajo=@idTrabajo"
         Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
-        ' MsgBox("Musico:" & gvMusicos.SelectedRow.Cells(7).Text.ToString)
         cmdInsert.Parameters.AddWithValue("@idMusicos", gvMusicos.SelectedRow.Cells(7).Text.ToString)
-        'MsgBox("Trabajo:" & gvMusicos.SelectedDataKey.Value)
         cmdInsert.Parameters.AddWithValue("@idTrabajo", gvMusicos.SelectedDataKey.Value)
 
         Try
             cnxInsert.Open()
             cmdInsert.ExecuteNonQuery()
         Catch ex As Exception
-            'MsgBox(ex.Message)
         Finally
             cnxInsert.Close()
             cnxInsert.Dispose()

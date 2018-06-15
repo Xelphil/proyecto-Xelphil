@@ -6,13 +6,10 @@ Partial Class contenidos_musico_Trabajos
     Inherits System.Web.UI.Page
     Dim cadena As String = "Data Source=(local);Initial Catalog=BandaDeMusica;Integrated Security=SSPI;"
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'pnDatos.Enabled = False
         listarMusicos()
-        'btBorrar.Enabled = False
     End Sub
 
     Public Sub listarMusicos()
-        ''cambiar a los usuarios
         Dim sentenciaBuscar As String = "select Trabajo.id,Trabajo.nombre,Trabajo.fecha,Trabajo.lugar,Trabajo.ciudad,Trabajo.direccion,Trabajo.descripcion,Trabajo.categoriatrabajo,Trabajo.completo from Trabajo join MusicoTrabajos on Trabajo.id=MusicoTrabajos.idTrabajo where MusicoTrabajos.idMusicos=@idMusicos"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)

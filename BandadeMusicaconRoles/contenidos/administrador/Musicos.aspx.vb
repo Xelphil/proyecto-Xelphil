@@ -14,7 +14,6 @@ Partial Class contenidos_administrador_Musicos
     End Sub
 
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
-        'MsgBox(Session("modifica").ToString)
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "insert into Musicos(nombre,apellidos,direccion,ciudad,coche,disponibilidad,categoriamusico,usuario,password) values(@nombre,@apellidos,@direccion,@ciudad,@coche,@disponibilidad,@categoriamusico,@usuario,@contraseña)"
@@ -94,7 +93,6 @@ Partial Class contenidos_administrador_Musicos
         Dim sentenciaBuscar As String = "select Musicos.idMusico,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id"
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
-        'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
         Dim adaptadorBuscar As New SqlDataAdapter(cmdBuscar)
         Dim dt As New DataTable
         adaptadorBuscar.Fill(dt)
@@ -109,7 +107,6 @@ Partial Class contenidos_administrador_Musicos
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
         btModificar.Enabled = True
         btBorrar.Enabled = True
         btCrear.Enabled = False
@@ -189,7 +186,6 @@ Partial Class contenidos_administrador_Musicos
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
         Session("modifica") = True
         pnDatos.Enabled = True
-        'MsgBox(Session("modifica").ToString)
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click

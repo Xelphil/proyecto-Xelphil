@@ -38,9 +38,6 @@ Partial Class contenidos_administrador_InstrumentosNecesarios
                 Response.Redirect("~/Contenidos/administrador/InstrumentosNecesarios.aspx")
             End Try
         Else
-            'update
-            'MsgBox(Session("modifica").ToString)
-            'MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update InstrumentosNecesarios set idcategoriatrabajo=@idcategoriatrabajo,cantidad=@cantidad,tipoinstrumento=@tipoinstrumento where id=@id"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -74,8 +71,6 @@ Partial Class contenidos_administrador_InstrumentosNecesarios
         Dim cnxBuscar As New SqlConnection(cadena)
         Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
         cmdBuscar.Parameters.AddWithValue("@id", Session("IdCategoriaTrabajo"))
-        'MsgBox(Session("IdCategoriaTrabajo"))
-        'cmdBuscar.Parameters.AddWithValue("@Cliente", Session("cliente").ToString.Split("#")(0))
         Dim adaptadorBuscar As New SqlDataAdapter(cmdBuscar)
         Dim dt As New DataTable
         adaptadorBuscar.Fill(dt)
@@ -90,7 +85,6 @@ Partial Class contenidos_administrador_InstrumentosNecesarios
     End Sub
 
     Protected Sub gvMusicos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvMusicos.SelectedIndexChanged
-        ' MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
         btModificar.Enabled = True
         btBorrar.Enabled = True
         btCrear.Enabled = False
@@ -105,7 +99,6 @@ Partial Class contenidos_administrador_InstrumentosNecesarios
         Dim dt As New DataTable
         adaptadorCliente.Fill(dt)
         Dim fila As DataRow = dt.Rows(0)
-        ' MsgBox(fila("idcategoriatrabajo").ToString)
         tbCodCat.Text = fila("idcategoriatrabajo").ToString
         tbCantidadInstrumentos.Text = fila("cantidad").ToString
         ddlTipoIntru.SelectedIndex = -1
@@ -137,7 +130,6 @@ Partial Class contenidos_administrador_InstrumentosNecesarios
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
         Session("modifica") = True
         pnDatos.Enabled = True
-        ' MsgBox(Session("modifica").ToString)
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click
@@ -146,12 +138,10 @@ Partial Class contenidos_administrador_InstrumentosNecesarios
         pnDatos.Enabled = True
         LimpiarCampos()
         Session("modifica") = False
-        'MsgBox(Session("IdCategoriaTrabajo"))
         tbCodCat.Text = Session("IdCategoriaTrabajo")
     End Sub
 
     Protected Sub btBusqueda_Click(sender As Object, e As EventArgs) Handles btBusqueda.Click
-        'MsgBox(Session("IdCategoriaTrabajo"))
         Dim sentenciaBuscar As String = "select InstrumentosNecesarios.id,InstrumentosNecesarios.idcategoriatrabajo,CategoriaTrabajo.nombre,CategoriaTrabajo.precio,InstrumentosNecesarios.cantidad,Instrumentos.instrumento from CategoriaTrabajo join InstrumentosNecesarios on CategoriaTrabajo.id=InstrumentosNecesarios.idcategoriatrabajo join Instrumentos on InstrumentosNecesarios.tipoinstrumento=Instrumentos.id where idcategoriatrabajo=@id"
         If Not tbBuscar.Text = Nothing Then
             If ddlBuscar.SelectedValue = 1 Then
