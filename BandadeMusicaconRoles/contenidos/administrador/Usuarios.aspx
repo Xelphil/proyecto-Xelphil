@@ -120,6 +120,17 @@
            <asp:Button ID="btUsuarios" runat="server" Text="Usuarios" />
        </nav>
         <section>
+            <asp:Panel ID="pnBuscador" runat="server">
+            <asp:Panel ID="pnBuscar" runat="server">
+                <asp:Label ID="lbBuscar" runat="server" Text="Buscar por: "></asp:Label>
+                <asp:DropDownList ID="ddlBuscar" runat="server">
+                    <asp:ListItem Text="Rol" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Usuario" Value="2"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:TextBox ID="tbBuscar" runat="server"></asp:TextBox>
+                <asp:Button ID="btBusqueda" runat="server" Text="Buscar..." />
+            </asp:Panel>
+                </asp:Panel>
             <h1>Cambiar Roles</h1>
             <asp:GridView ID="gvMusicos" runat="server" AutoGenerateColumns="False" DataKeyNames="idRol,idMusico">
                 <Columns>

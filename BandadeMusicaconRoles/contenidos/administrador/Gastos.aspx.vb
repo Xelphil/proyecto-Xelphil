@@ -124,9 +124,6 @@ Partial Class contenidos_administrador_Gastos
                 sentenciaBuscar = "select * from Gastos where NombredelGasto like '%" & tbBuscar.Text & "%'"
             End If
             If ddlBuscar.SelectedValue = 2 Then
-                sentenciaBuscar = "select * from Gastos where Fecha = " & tbBuscar.Text & ""
-            End If
-            If ddlBuscar.SelectedValue = 3 Then
                 sentenciaBuscar = "select * from Gastos where pagado = " & tbBuscar.Text & ""
             End If
             Dim cnxBuscar As New SqlConnection(cadena)
@@ -207,5 +204,4 @@ Partial Class contenidos_administrador_Gastos
     Protected Sub btUsuarios_Click(sender As Object, e As EventArgs) Handles btUsuarios.Click
         Response.Redirect("~/Contenidos/administrador/Usuarios.aspx")
     End Sub
-
 End Class

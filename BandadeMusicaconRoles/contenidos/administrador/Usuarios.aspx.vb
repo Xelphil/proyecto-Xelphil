@@ -144,6 +144,27 @@ Partial Class contenidos_administrador_Usuarios
         Session("modifica") = False
     End Sub
 
+    Protected Sub btBusqueda_Click(sender As Object, e As EventArgs) Handles btBusqueda.Click
+        Dim sentenciaBuscar As String = "select * from Gastos"
+        If Not tbBuscar.Text = Nothing Then
+            If ddlBuscar.SelectedValue = 1 Then
+                sentenciaBuscar = "SELECT Roles.Rol, Asignacion.idRol, Musicos.usuario, Asignacion.idMusico FROM Asignacion INNER JOIN Musicos ON Asignacion.idMusico = Musicos.idMusico INNER JOIN Roles ON Asignacion.idRol = Roles.idRol  where Roles.Rol like '%" & tbBuscar.Text & "%'"
+            End If
+            If ddlBuscar.SelectedValue = 2 Then
+                sentenciaBuscar = "SELECT Roles.Rol, Asignacion.idRol, Musicos.usuario, Asignacion.idMusico FROM Asignacion INNER JOIN Musicos ON Asignacion.idMusico = Musicos.idMusico INNER JOIN Roles ON Asignacion.idRol = Roles.idRol  where Musicos.usuario like '%" & tbBuscar.Text & "%'"
+            End If
+            Dim cnxBuscar As New SqlConnection(cadena)
+            Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)
+            Dim adaptadorBuscar As New SqlDataAdapter(cmdBuscar)
+            Dim dt As New DataTable
+            adaptadorBuscar.Fill(dt)
+            gvMusicos.DataSource = dt
+            gvMusicos.DataBind()
+            LimpiarCampos()
+        End If
+
+    End Sub
+
     Protected Sub btMusicos_Click(sender As Object, e As EventArgs) Handles btMusicos.Click
         Response.Redirect("~/Contenidos/administrador/Musicos.aspx")
     End Sub

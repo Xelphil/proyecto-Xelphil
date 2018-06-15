@@ -130,8 +130,7 @@
                 <asp:Label ID="lbBuscar" runat="server" Text="Buscar por: "></asp:Label>
                 <asp:DropDownList ID="ddlBuscar" runat="server">
                     <asp:ListItem Text="Nombre" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Fecha" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Pagado" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="Pagado" Value="2"></asp:ListItem>
                 </asp:DropDownList>
                 <asp:TextBox ID="tbBuscar" runat="server"></asp:TextBox>
                 <asp:Button ID="btBusqueda" runat="server" Text="Buscar..." />
@@ -162,7 +161,7 @@
     <asp:Label ID="lbdescripcion" runat="server" Text="Descripcion: "></asp:Label>
     <asp:TextBox ID="tbdescripcion" runat="server"></asp:TextBox>
     <br />
-       <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+       <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" ViewStateMode="Enabled">
             <ContentTemplate>
                 <asp:Label ID="lbFecha" runat="server" Text="Fecha: "></asp:Label>
                 <asp:Calendar ID="clFecha" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px">

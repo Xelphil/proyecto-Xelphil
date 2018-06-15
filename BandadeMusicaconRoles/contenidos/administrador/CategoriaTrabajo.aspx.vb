@@ -126,7 +126,6 @@ Partial Class contenidos_administrador_CategoriaTrabajo
         Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
         cmdInsert.Parameters.AddWithValue("@id", gvMusicos.SelectedDataKey.Value.ToString)
         Try
-            BorrarInstrumentosNecesarios(gvMusicos.SelectedDataKey.Value.ToString)
             cnxInsert.Open()
             If cnxInsert.State = Data.ConnectionState.Open Then
                 cmdInsert.ExecuteNonQuery()
@@ -135,6 +134,7 @@ Partial Class contenidos_administrador_CategoriaTrabajo
             End If
         Catch ex As Exception
             Throw New Exception(ex.Message)
+            MsgBox(ex.Message)
         Finally
             cnxInsert.Close()
             cnxInsert.Dispose()
@@ -158,28 +158,6 @@ Partial Class contenidos_administrador_CategoriaTrabajo
 
     Protected Sub btInstrumentosNec_Click(sender As Object, e As EventArgs) Handles btInstrumentosNec.Click
         Response.Redirect("~/Contenidos/administrador/InstrumentosNecesarios.aspx")
-    End Sub
-
-    Public Sub BorrarInstrumentosNecesarios(ByVal id As Int32)
-        Dim cnxInsert As New SqlConnection(cadena)
-        Dim sentenciaInsert As String = "delete from InstrumentosNecesarios where idcategoriatrabajo=@id"
-        Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
-        cmdInsert.Parameters.AddWithValue("@id", id)
-        Try
-            cnxInsert.Open()
-            If cnxInsert.State = Data.ConnectionState.Open Then
-                cmdInsert.ExecuteNonQuery()
-                cmdInsert.Parameters.Clear()
-
-            End If
-        Catch ex As Exception
-            Throw New Exception(ex.Message)
-        Finally
-            cnxInsert.Close()
-            cnxInsert.Dispose()
-            LimpiarCampos()
-            Response.Redirect("~/Contenidos/administrador/InstrumentosNecesarios.aspx")
-        End Try
     End Sub
 
     Protected Sub btMusicos_Click(sender As Object, e As EventArgs) Handles btMusicos.Click
