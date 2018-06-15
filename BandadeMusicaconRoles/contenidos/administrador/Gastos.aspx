@@ -162,7 +162,7 @@
     <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbdescripcion" runat="server" Text="Descripcion: "></asp:Label>
-    <asp:TextBox ID="tbdescripcion" runat="server"></asp:TextBox>
+    <asp:TextBox ID="tbdescripcion" runat="server" TextMode="MultiLine"></asp:TextBox>
     <br />
        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" ViewStateMode="Enabled">
             <ContentTemplate>

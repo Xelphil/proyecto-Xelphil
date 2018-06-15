@@ -198,7 +198,7 @@
     <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ErrorMessage="Se requiere introducir la dirección al músico" ControlToValidate="tbDireccion" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbDescripcion" runat="server" Text="Descripción: "></asp:Label>
-    <asp:TextBox ID="tbDescripcion" runat="server"></asp:TextBox>
+    <asp:TextBox ID="tbDescripcion" runat="server" TextMode="MultiLine"></asp:TextBox>
     <br />
        <asp:Label ID="lbCategoriatrabajo" runat="server" Text="Categoria de Trabajo: "></asp:Label>
     <asp:DropDownList ID="ddlcategoriatrabajo" runat="server" DataSourceID="SqlDCategoriaTrabajo" DataTextField="nombre" DataValueField="id"></asp:DropDownList>
