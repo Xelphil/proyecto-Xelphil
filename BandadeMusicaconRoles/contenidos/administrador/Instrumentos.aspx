@@ -104,6 +104,9 @@
         #clFecha{
             margin:auto;
         }
+        .validator{
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -149,7 +152,7 @@
     <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
        <br />
-    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al instrumento" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al instrumento" ControlToValidate="tbNombre" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
     <asp:Button ID="btGuardar" runat="server" Text="Guardar" ValidationGroup="DatosMusico"/>
     <asp:Button ID="btCancelar" runat="server" Text="Cancelar" />

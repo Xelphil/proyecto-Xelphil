@@ -101,6 +101,9 @@
         #pnDatos{
             align-items:center;
         }
+        .validator{
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -149,7 +152,7 @@
     <asp:Label ID="lbNombre" runat="server" Text="Sueldo: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
        <br />
-    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al músico" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al músico" ControlToValidate="tbNombre" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbCategoriaMusico" runat="server" Text="Categoria de Musico: "></asp:Label>
     <asp:DropDownList ID="ddlCategoriaMusico" runat="server" DataSourceID="SqlDSInstrumento" DataTextField="instrumento" DataValueField="id"></asp:DropDownList>

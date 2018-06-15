@@ -104,6 +104,9 @@
         #clFecha{
             margin:auto;
         }
+        .validator{
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -156,7 +159,7 @@
     <asp:Label ID="lbNombre" runat="server" Text="Nombre del Gasto: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
        <br />
-    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbdescripcion" runat="server" Text="Descripcion: "></asp:Label>
     <asp:TextBox ID="tbdescripcion" runat="server"></asp:TextBox>
@@ -175,7 +178,7 @@
                     <WeekendDayStyle BackColor="#FFFFCC" />
                    </asp:Calendar>
                 <br />
-                <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="Se requiere introducir una fecha del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="Se requiere introducir una fecha del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
             </ContentTemplate>
         </asp:UpdatePanel>
     <asp:Label ID="lbpagado" runat="server" Text="¿Pagado?: "></asp:Label>

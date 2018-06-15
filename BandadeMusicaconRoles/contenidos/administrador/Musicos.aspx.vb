@@ -147,7 +147,7 @@ Partial Class contenidos_administrador_Musicos
                 sentenciaBuscar = "select Musicos.idMusico,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.disponibilidad = " & tbBuscar.Text & ""
             End If
             If ddlBuscar.SelectedValue = 4 Then
-                sentenciaBuscar = "select Musicos.idMusico,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Musicos.categoriamusico = " & tbBuscar.Text & ""
+                sentenciaBuscar = "select Musicos.idMusico,Musicos.nombre,Musicos.apellidos,Musicos.direccion,Musicos.ciudad,Musicos.coche,Musicos.disponibilidad,Musicos.categoriamusico,Instrumentos.instrumento from Musicos join CategoriaMusico on Musicos.categoriamusico=CategoriaMusico.id join Instrumentos on CategoriaMusico.instrumento=Instrumentos.id where Instrumentos.instrumento like '%" & tbBuscar.Text & "%'"
             End If
             Dim cnxBuscar As New SqlConnection(cadena)
             Dim cmdBuscar As New SqlCommand(sentenciaBuscar, cnxBuscar)

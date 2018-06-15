@@ -101,6 +101,9 @@
         #pnDatos{
             align-items:center;
         }
+        .validator{
+            color:red;
+        }
     </style>
 </head>
 <body>

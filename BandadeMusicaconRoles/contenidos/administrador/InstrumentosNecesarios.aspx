@@ -104,6 +104,9 @@
         #clFecha{
             margin:auto;
         }
+        .validator{
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -153,18 +156,18 @@
             <asp:Label ID="lbCodCat" runat="server" Text="Cod. Categoría: "></asp:Label>
             <asp:TextBox ID="tbCodCat" runat="server" Enabled="false"></asp:TextBox>
         <br />
-            <asp:RequiredFieldValidator ID="rfvIdCatTrab" runat="server" ErrorMessage="Se requiere seleccionar una categoría de trabajo" ControlToValidate="tbCodCat" ValidationGroup="DatosInstrumentosnec"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvIdCatTrab" runat="server" ErrorMessage="Se requiere seleccionar una categoría de trabajo" ControlToValidate="tbCodCat" ValidationGroup="DatosInstrumentosnec" cssClass="validator"></asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="lbCantidadInstrumentos" runat="server" Text="CantidadInstrumentos: "></asp:Label>
             <asp:TextBox ID="tbCantidadInstrumentos" runat="server" TextMode="Number"></asp:TextBox>
         <br />    
-        <asp:RequiredFieldValidator ID="RFVCantidadinstrumentos" runat="server" ErrorMessage="Se requiere introducir una cantidad" ControlToValidate="tbCantidadInstrumentos" ValidationGroup="DatosInstrumentosnec"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="RFVCantidadinstrumentos" runat="server" ErrorMessage="Se requiere introducir una cantidad" ControlToValidate="tbCantidadInstrumentos" ValidationGroup="DatosInstrumentosnec" cssClass="validator"></asp:RequiredFieldValidator>
            <br />
            <asp:Label ID="lbTipoIntru" runat="server" Text="Tipo de Intrumento: "></asp:Label>
            <asp:DropDownList ID="ddlTipoIntru" runat="server" DataSourceID="SqlDSInstrumentos" DataTextField="instrumento" DataValueField="id"></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDSInstrumentos" runat="server" ConnectionString="<%$ ConnectionStrings:BandaDeMusicaConnectionString %>" SelectCommand="SELECT * FROM [Instrumentos]"></asp:SqlDataSource>
         <br />    
-        <asp:RequiredFieldValidator ID="rfvTipoIntru" runat="server" ErrorMessage="Se requiere seleccionar un instrumento" ControlToValidate="ddlTipoIntru" ValidationGroup="DatosInstrumentosnec"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="rfvTipoIntru" runat="server" ErrorMessage="Se requiere seleccionar un instrumento" ControlToValidate="ddlTipoIntru" ValidationGroup="DatosInstrumentosnec" cssClass="validator"></asp:RequiredFieldValidator>
         <br />
     <asp:Button ID="btGuardar" runat="server" Text="Guardar" ValidationGroup="DatosInstrumentosnec"/>
     <asp:Button ID="btCancelar" runat="server" Text="Cancelar" />

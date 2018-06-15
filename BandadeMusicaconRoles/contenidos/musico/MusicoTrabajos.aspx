@@ -84,6 +84,9 @@
         #pnBuscar{
             margin-bottom: 10px;
         }
+        .validator{
+            color:red;
+        }
     </style>
 </head>
 <body>

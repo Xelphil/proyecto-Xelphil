@@ -104,6 +104,9 @@
         #clFecha{
             margin:auto;
         }
+        .validator{
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -160,7 +163,7 @@
     <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
        <br />
-    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al músico" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Se requiere introducir un nombre al músico" ControlToValidate="tbNombre" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -176,23 +179,23 @@
                     <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
                     <WeekendDayStyle BackColor="#FFFFCC" />
                    </asp:Calendar>
-                <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="Se requiere introducir una fecha del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="Se requiere introducir una fecha del gasto" ControlToValidate="tbNombre" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
             </ContentTemplate>
         </asp:UpdatePanel>
        <asp:Label ID="lbLugar" runat="server" Text="Lugar: "></asp:Label>
     <asp:TextBox ID="tbLugar" runat="server"></asp:TextBox>
        <br />
-    <asp:RequiredFieldValidator ID="rfvLugar" runat="server" ErrorMessage="Se requiere introducir el lugar del trabajo" ControlToValidate="tbLugar" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvLugar" runat="server" ErrorMessage="Se requiere introducir el lugar del trabajo" ControlToValidate="tbLugar" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
        <asp:Label ID="lbCiudad" runat="server" Text="Ciudad: "></asp:Label>
     <asp:TextBox ID="tbCiudad" runat="server"></asp:TextBox>
        <br />
-    <asp:RequiredFieldValidator ID="rfvCiudad" runat="server" ErrorMessage="Se requiere introducir la ciudad al músico" ControlToValidate="tbCiudad" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvCiudad" runat="server" ErrorMessage="Se requiere introducir la ciudad al músico" ControlToValidate="tbCiudad" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbDireccion" runat="server" Text="Direccion: "></asp:Label>
     <asp:TextBox ID="tbDireccion" runat="server"></asp:TextBox>
        <br />
-    <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ErrorMessage="Se requiere introducir la dirección al músico" ControlToValidate="tbDireccion" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ErrorMessage="Se requiere introducir la dirección al músico" ControlToValidate="tbDireccion" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbDescripcion" runat="server" Text="Descripción: "></asp:Label>
     <asp:TextBox ID="tbDescripcion" runat="server"></asp:TextBox>

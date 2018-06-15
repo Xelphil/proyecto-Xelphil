@@ -101,6 +101,9 @@
         #pnDatos{
             align-items:center;
         }
+        .validator{
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -148,12 +151,12 @@
        <asp:Label ID="lbNombre" runat="server" Text="Nombre: "></asp:Label>
     <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
        <br />
-    <asp:RequiredFieldValidator ID="rfvnombre" runat="server" ErrorMessage="Se requiere introducir un nombre a la categoria" ControlToValidate="tbNombre" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvnombre" runat="server" ErrorMessage="Se requiere introducir un nombre a la categoria" ControlToValidate="tbNombre" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbPrecio" runat="server" Text="Precio: "></asp:Label>
     <asp:TextBox ID="tbPrecio" runat="server"></asp:TextBox>
        <br />
-    <asp:RequiredFieldValidator ID="rfvprecio" runat="server" ErrorMessage="Se requiere introducir un precio a la categoria" ControlToValidate="tbPrecio" ValidationGroup="DatosMusico"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvprecio" runat="server" ErrorMessage="Se requiere introducir un precio a la categoria" ControlToValidate="tbPrecio" ValidationGroup="DatosMusico" cssClass="validator"></asp:RequiredFieldValidator>
     <br />
     <br />
     <asp:Button ID="btGuardar" runat="server" Text="Guardar" ValidationGroup="DatosMusico"/>
