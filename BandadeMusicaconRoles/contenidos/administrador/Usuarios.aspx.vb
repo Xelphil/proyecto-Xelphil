@@ -14,7 +14,6 @@ Partial Class contenidos_administrador_Usuarios
     End Sub
 
     Protected Sub btGuardar_Click(sender As Object, e As EventArgs) Handles btGuardar.Click
-        MsgBox(Session("modifica").ToString)
         If Session("modifica").ToString = False Then
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "insert into Asignacion(idRol,idMusico) values(@idRol,@idMusico)"
@@ -37,7 +36,6 @@ Partial Class contenidos_administrador_Usuarios
                 Response.Redirect("~/Contenidos/administrador/Usuarios.aspx")
             End Try
         Else
-            MsgBox(gvMusicos.SelectedDataKey.Value.ToString)
             Dim cnxInsert As New SqlConnection(cadena)
             Dim sentenciaInsert As String = "update Asignacion set idRol=@idRol,idMusico=@idMusico where idRol=@idRolAntiguo and idMusico=@idMusicoAntiguo"
             Dim cmdInsert As New SqlCommand(sentenciaInsert, cnxInsert)
@@ -133,7 +131,7 @@ Partial Class contenidos_administrador_Usuarios
     Protected Sub btModificar_Click(sender As Object, e As EventArgs) Handles btModificar.Click
         Session("modifica") = True
         pnDatos.Enabled = True
-        MsgBox(Session("modifica").ToString)
+        btCrear.Enabled = False
     End Sub
 
     Protected Sub btCrear_Click(sender As Object, e As EventArgs) Handles btCrear.Click
